@@ -8,7 +8,7 @@ new CanvasTextWrapper(HTMLCanvasElement, String [, options]);
 
 ```options``` - is a JavaScript object with the following available properties and values:
 
-- ```font: String``` - text style that includes font size(REQUIRED), wheight & family, similar to CSS font shorthand property
+- ```font: String``` - text style that includes font size(REQUIRED), weight & family, similar to CSS font shorthand property
 - ```textAlign: "left" | "center" | "right"``` - horizontal alignment that applies for each line
 - ```verticalAlign: "top" | "middle" | "bottom"``` - vertical alignment that applies on a whole block of text
 - ```paddingX: Number``` - horizontal padding in pixels set equally on both, left and right sides of the element
