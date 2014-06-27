@@ -20,7 +20,7 @@
     </p>
 </header>
 <article>
-    <h2>Syntax:</h2><br/>
+    <h2>Syntax</h2><br/>
 
     <p class="white-block">new CanvasTextWrapper(HTMLCanvasElement, String [, Options]);</p><br/>
 
@@ -31,7 +31,7 @@
     <ul class="syntax">
         <li>
             <div class="emph">font</div>
-            (String) - text style that includes font size, family, etc. specified similarly to CSS
+            (String) - text style that includes font size in px (REQUIRED), weight & family, etc. specified similarly to CSS
             font shorthand property
         </li>
         <li>
@@ -82,9 +82,8 @@
             </p>
         </li>
     </ul>
-</article>
-<article>
-    <h2>Defaults & Usage:</h2><br/>
+
+    <h2>Defaults</h2><br/>
 
     <p>The default options object which values will be used if a property is not specified or no object is passed:</p>
 
@@ -99,6 +98,7 @@
     </p>
     <br/>
 
+    <h2>Usage</h2><br/>
     <p>
         Use standard canvas text drawing methods such as "fillStyle" and "globalCompositeOperation" when needed before
         using CanvasTextWrapper like so:
@@ -113,6 +113,12 @@
         context.fillRect(0, 0, canvas.width, canvas.height);<br/><br/>
         context.globalCompositeOperation = "destination-out";<br/>
         var wrapper = new CanvasTextWrapper(canvas, 'Hello'); // default options will apply<br/>
+    </p>
+    
+    <h2>Installation</h2><br/>
+        <p class="white-block">
+        bower install canvas-text-wrapper<br/>
+        npm install canvas-text-wrapper
     </p>
 </article>
 <section>
