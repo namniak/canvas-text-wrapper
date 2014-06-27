@@ -1,0 +1,15 @@
+{
+  "name": "canvas-text-wrapper",
+  "description": "Javascript canvas text wrapper that automatically breaks the text into lines on a rule of your choice with available horizontal and vertical align options.",
+  "version": "0.1.0",
+  "license": "MIT",
+  "main": "CanvasTextWrapper.min.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/namniak/CanvasTextWrapper"
+  },
+  "author": "Vadim Namniak <vnamnyak@gmail.com> (https://github.com/namniak)",
+  "bugs": {
+    "url": "https://github.com/namniak/CanvasTextWrapper/issues"
+  }
+}
