@@ -49,7 +49,7 @@ context.globalCompositeOperation = "destination-out";
 new CanvasTextWrapper(canvas, "Hi there", {
       font:          "normal 40px Open Sans, sans-serif",
       textAlign:     "center",
-      verticalAlign: "top",
+      verticalAlign: "bottom",
       paddingY:      10,
       lineBreak:     "word",
 });
@@ -57,3 +57,11 @@ new CanvasTextWrapper(canvas, "Hi there", {
 
 ##Examples
 http://namniak.github.io/CanvasTextWrapper/
+
+##Installation
+
+```
+bower install canvas-text-wrapper
+
+npm install canvas-text-wrapper
+```
