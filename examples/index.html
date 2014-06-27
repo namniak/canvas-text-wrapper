@@ -1,0 +1,125 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,600' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/CanvasTextWrapper.js"></script>
+    <script src="js/options.js"></script>
+    <script src="js/examples.js"></script>
+    <title>CanvasTextWrapper.js</title>
+</head>
+<body>
+<header>
+    <p>CanvasTextWrapper.js</p>
+
+    <p class="description">
+        JavaScript canvas text wrapper that automatically splits a string into lines on specified rule with
+        optional alignments and padding.
+    </p>
+</header>
+<article>
+    <h2>Syntax:</h2><br/>
+
+    <p class="white-block">new CanvasTextWrapper(HTMLCanvasElement, String [, Options]);</p><br/>
+
+    <div>
+        <div class="emph">OPTIONS</div>
+        - is a JavaScript object with the following available properties and values:
+    </div>
+    <ul class="syntax">
+        <li>
+            <div class="emph">font</div>
+            (String) - text style that includes font size, family, etc. specified similarly to CSS
+            font shorthand property
+        </li>
+        <li>
+            <div class="emph">textAlign</div>
+            (String) - horizontal alignment that applies for each line
+            <ul class="values">
+                <li>"left"</li>
+                <li>"center"</li>
+                <li>"right"</li>
+            </ul>
+        </li>
+        <li>
+            <div class="emph">verticalAlign</div>
+            (String) - vertical alignment that applies on a whole block of text
+            <ul class="values">
+                <li>"top"</li>
+                <li>"middle"</li>
+                <li>"bottom"</li>
+            </ul>
+        </li>
+        <li>
+            <div class="emph">paddingX</div>
+            (Number) - horizontal padding in pixels set equally on both, left and right sides of
+            the element
+        </li>
+        <li>
+            <div class="emph">paddingY</div>
+            (Number) - vertical padding in pixels set equally on both, top and bottom sides of the element
+        </li>
+        <li>
+            <div class="emph">fitParent</div>
+            (Boolean) - parameter that controls which element to fit
+            <ul class="values">
+                <li>true - fit canvas parent's width instead of canvas own width</li>
+                <li>false - fit canvas width</li>
+            </ul>
+        </li>
+        <li>
+            <div class="emph">lineBreak</div>
+            (String) - text split rule
+            <ul class="values">
+                <li>"auto" - text fills the element's width going to a new line on a whole word when no more space</li>
+                <li>"word" - each next word will be placed on a new line</li>
+            </ul>
+            <p>
+                NOTE: if a single word is too long to fit the width with specified font size, it will be broken into as
+                many lines as required on any letter without specific word breaking rule.
+            </p>
+        </li>
+    </ul>
+</article>
+<article>
+    <h2>Defaults & Usage:</h2><br/>
+
+    <p>The default options object which values will be used if a property is not specified or no object is passed:</p>
+
+    <p class="white-block">
+        {&nbsp;font: "18px Arial, sans-serif",<br/>
+        &nbsp;&nbsp;&nbsp;textAlign: "left",<br/>
+        &nbsp;&nbsp;&nbsp;verticalAlign: "top",<br/>
+        &nbsp;&nbsp;&nbsp;paddingX: 0,<br/>
+        &nbsp;&nbsp;&nbsp;paddingY: 0,<br/>
+        &nbsp;&nbsp;&nbsp;fitParent: false,<br/>
+        &nbsp;&nbsp;&nbsp;lineBreak: "auto"&nbsp;}
+    </p>
+    <br/>
+
+    <p>
+        Use standard canvas text drawing methods such as "fillStyle" and "globalCompositeOperation" when needed before
+        using CanvasTextWrapper like so:
+    </p>
+
+    <p class="white-block">
+        var canvas = document.createElement('canvas');<br/>
+        canvas.width = 300;<br/>
+        canvas.height = 250;<br/>
+        context = canvas.getContext("2d");<br/>
+        context.fillStyle = "rgb(255, 255, 255)";<br/>
+        context.fillRect(0, 0, canvas.width, canvas.height);<br/><br/>
+        context.globalCompositeOperation = "destination-out";<br/>
+        var wrapper = new CanvasTextWrapper(canvas, 'Hello'); // default options will apply<br/>
+    </p>
+</article>
+<section>
+    <h2>Examples:</h2>
+</section>
+<footer>
+    &larr;&nbsp;<a href="https://github.com/namniak/CanvasTextWrapper">View on GitHub</a>
+</footer>
+</body>
+</html>
