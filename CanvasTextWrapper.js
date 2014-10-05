@@ -68,12 +68,10 @@
 
                 // use previous font size, not the one that broke the while condition
                 this.setFontSize(--fontSize);
-                var lines = this.getWrappedText(elementWidth);
-                var textBlockHeight = lines.length * this.lineHeight;
-            } else {
-                var lines = this.getWrappedText(elementWidth);
-                var textBlockHeight = lines.length * this.lineHeight;
             }
+
+            var lines = this.getWrappedText(elementWidth);
+            var textBlockHeight = lines.length * this.lineHeight;
 
             // set vertical align for the whole text block
             this.setTextVerticalAlign(textPos, textBlockHeight);
