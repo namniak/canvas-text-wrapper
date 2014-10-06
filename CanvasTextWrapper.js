@@ -57,14 +57,15 @@
             };
 
             if (this.sizeToFill) {
-                // starting at 1px increase font size by 1px until text block exceeds the height of its padded container
+                // starting at 1px increase font size by 1px until text block exceeds the height of its padded container or until words break
                 var elementHeight = ((this.fitParent === false) ? this.canvas.height : this.canvas.parentNode.clientHeight) - (this.paddingX * 2);
+                var numWords = this.text.trim().split(/\s+/).length;
                 var fontSize = 0;
                 do {
                     this.setFontSize(++fontSize);
                     var lines = this.getWrappedText(elementWidth);
                     var textBlockHeight = lines.length * this.lineHeight;
-                } while (textBlockHeight < elementHeight);
+                } while (textBlockHeight < elementHeight && lines.join(' ').split(/\s+/).length == numWords);
 
                 // use previous font size, not the one that broke the while condition
                 this.setFontSize(--fontSize);
@@ -93,7 +94,7 @@
         getWrappedText: function(elementWidth) {
             var maxTextLength = elementWidth - (this.paddingX * 2);
 
-            var words = this.text.split(/\s+/);
+            var words = this.text.trim().split(/\s+/);
             var lines = [];
 
             this.checkWordsLength(this.context, words, maxTextLength);
