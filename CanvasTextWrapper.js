@@ -1,5 +1,5 @@
 /*! CanvasTextWrapper (https://github.com/namniak/CanvasTextWrapper)
- *  Version:  0.1.0
+ *  Version:  0.2.0
  *
  *  MIT License (http://www.opensource.org/licenses/mit-license.html)
  *  Copyright (c) 2014 Vadim Namniak
@@ -16,7 +16,7 @@
         paddingY: 0,           // zero px top & bottom text padding relative to canvas or parent
         fitParent: false,      // text is tested to fit canvas width
         lineBreak: 'auto',     // text fills the element's (canvas or parent) width going to a new line on a whole word
-        sizeToFill: false      // text is resized to fill the container height (given font size is ignored)
+        sizeToFill: false      // text is resized to fill the container (given font size is ignored)
     };
 
     window.CanvasTextWrapper = function(canvas, text, opts) {
@@ -34,7 +34,7 @@
         }
 
         // extract font size
-        this.lineHeight = parseInt(this.font.replace(/^\D+/g, ''), 10);
+        this.lineHeight = parseInt(this.font.replace(/^\D+/g, ''), 10) || 18;
 
         // validate all set properties
         this.validate();
@@ -78,10 +78,10 @@
             this.setTextVerticalAlign(textPos, textBlockHeight);
 
             for (var i = 0; i < lines.length; i++) {
-                this.setTextHorizontalAlign(context, textPos, elementWidth, lines[i]);
+                this.setTextHorizontalAlign(this.context, textPos, elementWidth, lines[i]);
 
                 textPos.y = parseInt(textPos.y) + parseInt(this.lineHeight);
-                context.fillText(lines[i], textPos.x, textPos.y);
+                this.context.fillText(lines[i], textPos.x, textPos.y);
             }
         },
 
