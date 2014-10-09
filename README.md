@@ -17,7 +17,7 @@ new CanvasTextWrapper(HTMLCanvasElement, String [, options]);
 - ```lineBreak: "auto" | "word"``` - text split rule. When using ```"auto"```, text fills the element's width going to a new line on a whole word when no more space. If ```"word"``` is set as value, each next word will be placed on a new line.
 - ```sizeToFill: Boolean``` - ignore given font size and resize text to fill its padded container
 
-NOTE: if a single word is too long to fit the width with specified font size, it will be broken into as many lines as required on any letter without specific word breaking rule.
+NOTE: if a single word is too long to fit the width with specified font size, it will be broken into as many lines as required on any letter of the word unless ```sizeToFill``` option is used.
 
 ##Defaults
 
