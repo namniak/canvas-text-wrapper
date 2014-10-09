@@ -76,27 +76,38 @@
                 <li>"auto" - text fills the element's width going to a new line on a whole word when no more space</li>
                 <li>"word" - each next word will be placed on a new line</li>
             </ul>
-            <p>
-                NOTE: if a single word is too long to fit the width with specified font size, it will be broken into as
-                many lines as required on any letter without specific word breaking rule.
-            </p>
         </li>
-    </ul>
+        <li>
+            <div class="emph">sizeToFill</div>
+            (Boolean) - auto font size to fill text container
+            <ul class="values">
+                <li>"true" - ignore given font size and resize text to fill its padded container</li>
+                <li>"true" - use specified or default font size</li>
+            </ul>
+        </li>
+        <p>
+            NOTE: if a single word is too long to fit the width with specified font size, it will be broken into as
+            many lines as required on any letter without specific word breaking rule unless <strong>sizeToFill</strong> option is used.
+        </p>
+    </ul><br/>
 
     <h2>Defaults</h2><br/>
 
     <p>The default options object which values will be used if a property is not specified or no object is passed:</p>
 
-    <p class="white-block">
-        {&nbsp;font: "18px Arial, sans-serif",<br/>
-        &nbsp;&nbsp;&nbsp;textAlign: "left",<br/>
-        &nbsp;&nbsp;&nbsp;verticalAlign: "top",<br/>
-        &nbsp;&nbsp;&nbsp;paddingX: 0,<br/>
-        &nbsp;&nbsp;&nbsp;paddingY: 0,<br/>
-        &nbsp;&nbsp;&nbsp;fitParent: false,<br/>
-        &nbsp;&nbsp;&nbsp;lineBreak: "auto"&nbsp;}
-    </p>
-    <br/>
+    <pre class="white-block">
+    { 
+        font: "18px Arial, sans-serif",     
+        textAlign: "left",  
+        verticalAlign: "top",   
+        paddingX: 0,
+        paddingY: 0,
+        fitParent: false,
+        lineBreak: "auto",
+       sizeToFill: false
+    }
+    </pre>
+    <br/><br/>
 
     <h2>Usage</h2><br/>
     <p>

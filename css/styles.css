@@ -3,6 +3,7 @@ body {
     margin: auto;
     font-family: 'Open Sans', sans-serif;
     color: #fff;
+    line-height: 140%;
 }
 
 div, header, footer, article {
@@ -128,9 +129,17 @@ img {
 
 span {
     margin-left: 20px;
+    margin-right: 5px;
 }
 
 span, .emph {
     font-weight: 600;
     display: inline;
+}
+
+strong {
+    background: #fff;
+    color: #0D9F69;
+    font-weight: bold;
+    padding: 0 5px;
 }

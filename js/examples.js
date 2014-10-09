@@ -57,8 +57,8 @@ document.onreadystatechange = function() {
 
                     // read used properties
                     for (var property in options[i]) {
-                        var stringWrapper = (property == 'paddingX' || property == 'paddingY') ? '' : '"';
-                        optionsData += '         <span>' + property + '</span>: ' +
+                        var stringWrapper = (property == 'paddingX' || property == 'paddingY' || property == 'sizeToFill') ? '' : '"';
+                        optionsData += '         <span>' + property + ':</span> ' +
                             stringWrapper + options[i][property] + stringWrapper + ',<br/>';
                     }
 

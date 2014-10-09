@@ -1,5 +1,5 @@
 /*! CanvasTextWrapper (https://github.com/namniak/CanvasTextWrapper)
- *  Version:  0.1.0
+ *  Version:  0.2.0
  *
  *  MIT License (http://www.opensource.org/licenses/mit-license.html)
  *  Copyright (c) 2014 Vadim Namniak
@@ -15,10 +15,12 @@
         paddingX: 0,           // zero px left & right text padding relative to canvas or parent
         paddingY: 0,           // zero px top & bottom text padding relative to canvas or parent
         fitParent: false,      // text is tested to fit canvas width
-        lineBreak: 'auto'      // text fills the element's (canvas or parent) width going to a new line on a whole word
+        lineBreak: 'auto',     // text fills the element's (canvas or parent) width going to a new line on a whole word
+        sizeToFill: false      // text is resized to fill the container (given font size is ignored)
     };
 
     window.CanvasTextWrapper = function(canvas, text, opts) {
+
         if (!(this instanceof CanvasTextWrapper)) {
             throw new TypeError('CanvasTextWrapper constructor failed. Use "new" keyword when instantiating.');
         }
@@ -32,7 +34,7 @@
         }
 
         // extract font size
-        this.lineHeight = parseInt(this.font.replace(/^\D+/g, ''), 10);
+        this.lineHeight = parseInt(this.font.replace(/^\D+/g, ''), 10) || 18;
 
         // validate all set properties
         this.validate();
@@ -48,34 +50,57 @@
     CanvasTextWrapper.prototype = {
 
         drawText: function() {
-            var canvas = this.canvas;
-            var context = canvas.getContext('2d');
-
-            var elementWidth = (this.fitParent === false) ? canvas.width : canvas.parentNode.clientWidth;
-            var maxTextLength = elementWidth - (this.paddingX * 2);
-
-            var words = this.text.split(/\s+/);
-            var lines = [];
+            var elementWidth = (this.fitParent === false) ? this.canvas.width : this.canvas.parentNode.clientWidth;
             var textPos = {
                 x: 0,
                 y: 0
             };
 
-            this.checkWordsLength(context, words, maxTextLength);
-            this.breakTextIntoLines(context, lines, words, maxTextLength);
+            if (this.sizeToFill) {
+                // starting at 1px increase font size by 1px until text block exceeds the height of its padded container or until words break
+                var elementHeight = ((this.fitParent === false) ? this.canvas.height : this.canvas.parentNode.clientHeight) - (this.paddingX * 2);
+                var numWords = this.text.trim().split(/\s+/).length;
+                var fontSize = 0;
+                do {
+                    this.setFontSize(++fontSize);
+                    var lines = this.getWrappedText(elementWidth);
+                    var textBlockHeight = lines.length * this.lineHeight;
+                } while (textBlockHeight < elementHeight && lines.join(' ').split(/\s+/).length == numWords);
 
-            // height of the broken down into lines text
+                // use previous font size, not the one that broke the while condition
+                this.setFontSize(--fontSize);
+            }
+
+            var lines = this.getWrappedText(elementWidth);
             var textBlockHeight = lines.length * this.lineHeight;
 
             // set vertical align for the whole text block
             this.setTextVerticalAlign(textPos, textBlockHeight);
 
             for (var i = 0; i < lines.length; i++) {
-                this.setTextHorizontalAlign(context, textPos, elementWidth, lines[i]);
+                this.setTextHorizontalAlign(this.context, textPos, elementWidth, lines[i]);
 
                 textPos.y = parseInt(textPos.y) + parseInt(this.lineHeight);
-                context.fillText(lines[i], textPos.x, textPos.y);
+                this.context.fillText(lines[i], textPos.x, textPos.y);
             }
+        },
+
+        setFontSize: function(size) {
+            var fontParts = this.context.font.split(/\b\d+px\b/i);
+            this.context.font = fontParts[0] + size + 'px' + fontParts[1];
+            this.lineHeight = size;
+        },
+
+        getWrappedText: function(elementWidth) {
+            var maxTextLength = elementWidth - (this.paddingX * 2);
+
+            var words = this.text.trim().split(/\s+/);
+            var lines = [];
+
+            this.checkWordsLength(this.context, words, maxTextLength);
+            this.breakTextIntoLines(this.context, lines, words, maxTextLength);
+
+            return lines;
         },
 
         checkWordsLength: function(context, words, maxTextLength) {
@@ -165,6 +190,9 @@
             }
             if (this.lineBreak !== 'auto' && this.lineBreak !== 'word') {
                 throw new TypeError('From CanvasTextWrapper(): Unsupported line break value is used. Property "lineBreak" can only be set to "auto", or "word".');
+            }
+            if (typeof this.sizeToFill !== 'boolean') {
+                throw new TypeError('From CanvasTextWrapper(): Property "sizeToFill" must be set to a Boolean.');
             }
         }
     };
