@@ -21,16 +21,16 @@
             verticalAlign: 'middle'
         },
         {
+            textAlign: 'center',
+            verticalAlign: 'middle',
+            sizeToFill: true
+        },
+                {
             font: 'bold 50px Tahoma, Geneva, sans-serif',
             textAlign: 'right',
             paddingX: 25,
-            paddingY: 25
+            paddingY: 25,
+            strokeText: true
         },
-        {
-            textAlign: 'center',
-            verticalAlign: 'middle',
-            //lineBreak: 'word',
-            sizeToFill: true
-        }
     ];
 })();

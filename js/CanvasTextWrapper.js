@@ -16,7 +16,8 @@
         paddingY: 0,           // zero px top & bottom text padding relative to canvas or parent
         fitParent: false,      // text is tested to fit canvas width
         lineBreak: 'auto',     // text fills the element's (canvas or parent) width going to a new line on a whole word
-        sizeToFill: false      // text is resized to fill the container (given font size is ignored)
+        sizeToFill: false,     // text is resized to fill the container (given font size is ignored)
+        strokeText: false      // text is stroked according to context configuration.
     };
 
     window.CanvasTextWrapper = function(canvas, text, opts) {
@@ -82,6 +83,9 @@
 
                 textPos.y = parseInt(textPos.y) + parseInt(this.lineHeight);
                 this.context.fillText(lines[i], textPos.x, textPos.y);
+                if (this.strokeText) {
+                    this.context.strokeText(lines[i], textPos.x, textPos.y);
+                }
             }
         },
 
@@ -193,6 +197,9 @@
             }
             if (typeof this.sizeToFill !== 'boolean') {
                 throw new TypeError('From CanvasTextWrapper(): Property "sizeToFill" must be set to a Boolean.');
+            }
+            if (typeof this.strokeText !== 'boolean') {
+                throw new TypeError('From CanvasTextWrapper(): Property "strokeText" must be set to a Boolean.');
             }
         }
     };

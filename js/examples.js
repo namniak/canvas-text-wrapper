@@ -43,9 +43,18 @@ document.onreadystatechange = function() {
                     context.fillRect(0, 0, w, h);
                     exampleItem.appendChild(canvasMask);
 
-                    // create text to be cut out mask layer
-                    context.fillStyle = '#212121';
-                    context.globalCompositeOperation = 'destination-out';
+                    if (i < options.length -1) {
+                        // create text to be cut out mask layer
+                        context.fillStyle = '#212121';
+                        context.globalCompositeOperation = 'destination-out';
+                    } else {
+                        // make stroke gradient
+                        var gradient=context.createLinearGradient(0,0,canvasImg.width,0);
+                        gradient.addColorStop("0","#ffff00");
+                        gradient.addColorStop("1.0","red");
+                        context.strokeStyle=gradient;
+                        context.lineWidth = 3;
+                    }
 
                     // create wrapper
                     new CanvasTextWrapper(canvasMask, ('#' + (i + 1) + ' ' + text), options[i]);
