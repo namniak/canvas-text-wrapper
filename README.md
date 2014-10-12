@@ -16,6 +16,7 @@ new CanvasTextWrapper(HTMLCanvasElement, String [, options]);
 - ```fitParent: Boolean``` - parameter that controls which element to fit where ```true``` means fit canvas parent's width instead of canvas own width
 - ```lineBreak: "auto" | "word"``` - text split rule. When using ```"auto"```, text fills the element's width going to a new line on a whole word when no more space. If ```"word"``` is set as value, each next word will be placed on a new line.
 - ```sizeToFill: Boolean``` - ignore given font size and resize text to fill its padded container
+- ```strokeText: Boolean``` - Cause text to be outlined according to context configuration
 
 NOTE: if a single word is too long to fit the width with specified font size, it will be broken into as many lines as required on any letter of the word unless ```sizeToFill``` option is used.
 
@@ -32,7 +33,8 @@ The default options object which values will be used if a property is not specif
        paddingY:       0,
        fitParent:      false,
        lineBreak:     "auto",
-       sizeToFill:     false
+       sizeToFill:     false,
+       strokeText:     false
     } 
 ```
 
