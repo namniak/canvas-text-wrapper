@@ -8,7 +8,7 @@ new CanvasTextWrapper(HTMLCanvasElement, String [, options]);
 
 ```options``` - is a JavaScript object with the following available properties and values:
 
-- ```font: String``` - text style that includes font size in px (REQUIRED), weight & family, similar to CSS font shorthand property
+- ```font: String``` - text style that includes font size (in px), weight and family, similarly to CSS font shorthand property
 - ```textAlign: "left" | "center" | "right"``` - horizontal alignment that applies for each line
 - ```verticalAlign: "top" | "middle" | "bottom"``` - vertical alignment that applies on a whole block of text
 - ```paddingX: Number``` - horizontal padding in pixels set equally on both, left and right sides of the element
@@ -39,7 +39,7 @@ The default options object which values will be used if a property is not specif
 ```
 
 ##Usage
-Use standard canvas text drawing methods such as "fillStyle" and "globalCompositeOperation" when needed before using CanvasTextWrapper like so:
+Use standard canvas text drawing сщташпгкфешщты such as "fillStyle" and "globalCompositeOperation" when needed before using CanvasTextWrapper like so:
 ``` 
 var canvas = document.createElement('canvas');
 canvas.width = 300;
@@ -47,8 +47,6 @@ canvas.height = 250;
 context = canvas.getContext("2d");
 context.fillStyle = "rgb(255, 255, 255)";
 context.fillRect(0, 0, canvas.width, canvas.height);
-
-context.globalCompositeOperation = "destination-out";
 
 new CanvasTextWrapper(canvas, "Hi there", {
       font:          "normal 40px Open Sans, sans-serif",
