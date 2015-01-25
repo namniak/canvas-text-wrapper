@@ -8,35 +8,44 @@
     <script src="js/CanvasTextWrapper.js"></script>
     <script src="js/options.js"></script>
     <script src="js/examples.js"></script>
-    <title>CanvasTextWrapper.js</title>
+    <title>CanvasTextWrapper</title>
 </head>
 <body>
 <header>
-    <p>CanvasTextWrapper.js</p>
+    <p>CanvasTextWrapper</p>
 
     <p class="description">
-        JavaScript canvas text wrapper that automatically splits a string into lines on specified rule with
-        optional alignments and padding.
+        Pure JavaScript canvas text wrapper that automatically splits a string into lines on specified rule with
+        alignment and padding.
     </p>
 </header>
 <article>
     <h2>Syntax</h2><br/>
 
-    <p class="white-block">new CanvasTextWrapper(HTMLCanvasElement, String [, Options]);</p><br/>
+    <p class="white-block">CanvasTextWrapper(HTMLCanvasElement, String [, Options]);</p><br/>
 
     <div>
-        <div class="emph">OPTIONS</div>
-        - is a JavaScript object with the following available properties and values:
+        <div class="emph">Options</div>
+        - is an object with the following available properties and values:
     </div>
     <ul class="syntax">
         <li>
             <div class="emph">font</div>
-            (String) - text style that includes font size in px (REQUIRED), weight & family, etc. specified similarly to CSS
-            font shorthand property
+            (String) - text style that includes font size in px, weight, font family, etc. Similar to CSS font shorthand
+            property
+        </li>
+        <li>
+            <div class="emph">lineHeight</div>
+            (Number or String)
+            <ul class="values">
+                <li>number - n times font size where 1 is equivalent to '100%'</li>
+                <li>"%"</li>
+                <li>"px"</li>
+            </ul>
         </li>
         <li>
             <div class="emph">textAlign</div>
-            (String) - horizontal alignment that applies for each line
+            (String) - horizontal alignment of each line
             <ul class="values">
                 <li>"left"</li>
                 <li>"center"</li>
@@ -45,7 +54,7 @@
         </li>
         <li>
             <div class="emph">verticalAlign</div>
-            (String) - vertical alignment that applies on a whole block of text
+            (String) - vertical alignment of the whole block of text
             <ul class="values">
                 <li>"top"</li>
                 <li>"middle"</li>
@@ -54,12 +63,11 @@
         </li>
         <li>
             <div class="emph">paddingX</div>
-            (Number) - horizontal padding in pixels set equally on both, left and right sides of
-            the element
+            (Number) - horizontal padding (in px) set equally on both, left and right sides of the container
         </li>
         <li>
             <div class="emph">paddingY</div>
-            (Number) - vertical padding in pixels set equally on both, top and bottom sides of the element
+            (Number) - vertical padding (in px) set equally on both, top and bottom sides of the container
         </li>
         <li>
             <div class="emph">fitParent</div>
@@ -73,7 +81,7 @@
             <div class="emph">lineBreak</div>
             (String) - text split rule
             <ul class="values">
-                <li>"auto" - text fills the element's width going to a new line on a whole word when no more space</li>
+                <li>"auto" - text fills padded container going to a next line on a whole word</li>
                 <li>"word" - each next word will be placed on a new line</li>
             </ul>
         </li>
@@ -81,61 +89,59 @@
             <div class="emph">sizeToFill</div>
             (Boolean) - auto font size to fill text container
             <ul class="values">
-                <li>"true" - ignore given font size and resize text to fill its padded container</li>
-                <li>"false" - use specified or default font size</li>
+                <li>true - ignore given font size/line height and resize text to fill its padded container</li>
+                <li>false - use specified or default font size</li>
             </ul>
         </li>
         <li>
             <div class="emph">strokeText</div>
-            (Boolean) - text outline based on context configuration (make sure it doesn't contradict with other context settings such as globalCompositeOperation, etc)
-            <ul class="values">
-                <li>"true" - enable text outline</li>
-                <li>"false" - enable text outline</li>
-            </ul>
+            (Boolean) - outline text based on context configuration
+        </li>
+        <li>
+            <div class="emph">justifyLines</div>
+            (Boolean) - flex spaces between words so all lines match the same width (one-word lines are skipped).
         </li>
         <p>
-            NOTE: if a single word is too long to fit the width with specified font size, it will be broken into as
-            many lines as required on any letter of the word unless <strong>sizeToFill</strong> option is used.
+            NOTE: if a single word is too long to fit the width with specified font size, it will break on any letter
+            unless "sizeToFill" option is enabled.
         </p>
-    </ul><br/>
+    </ul>
 
-    <h2>Defaults</h2><br/>
-
-    <p>The default options object which values will be used if a property is not specified or no object is passed:</p>
-
+    <h2>Default Options</h2><br/>
     <pre class="white-block">
     { 
-        font: "18px Arial, sans-serif",     
-        textAlign: "left",  
-        verticalAlign: "top",   
-        paddingX: 0,
-        paddingY: 0,
-        fitParent: false,
-        lineBreak: "auto",
-        sizeToFill: false
+        <strong>font</strong>: "18px Arial, sans-serif",
+        <strong>lineHeight</strong>: 1,
+        <strong>textAlign</strong>: "left",
+        <strong>verticalAlign</strong>: "top",
+        <strong>paddingX</strong>: 0,
+        <strong>paddingY</strong>: 0,
+        <strong>fitParent</strong>: false,
+        <strong>lineBreak</strong>: "auto",
+        <strong>sizeToFill</strong>: false,
+        <strong>allowNewLine</strong>: true,
+        <strong>justifyLines</strong>: false
     }
     </pre>
-    <br/><br/>
 
     <h2>Usage</h2><br/>
+
     <p>
-        Use standard canvas text drawing methods such as "fillStyle" and "globalCompositeOperation" when needed before
-        using CanvasTextWrapper like so:
+        Use context settings such as "fillStyle", "lineWidth" or "strokeStyle" before using CanvasTextWrapper like so:
     </p>
 
-    <p class="white-block">
-        var canvas = document.createElement('canvas');<br/>
-        canvas.width = 300;<br/>
-        canvas.height = 250;<br/>
-        context = canvas.getContext("2d");<br/>
-        context.fillStyle = "rgb(255, 255, 255)";<br/>
-        context.fillRect(0, 0, canvas.width, canvas.height);<br/><br/>
-        context.globalCompositeOperation = "destination-out";<br/>
-        var wrapper = new CanvasTextWrapper(canvas, 'Hello'); // default options will apply<br/>
-    </p>
-    <br/>
-    
+    <pre class="white-block">
+        var canvas = document.getElementById("#canvasText");
+        canvas.width = 200;
+        canvas.height = 200;
+        context = canvas.getContext("2d");
+        context.lineWidth = 2;
+        context.strokeStyle = "#ff0000";
+        CanvasTextWrapper(canvas,"Hello");    //default options will apply
+    </pre>
+
     <h2>Installation</h2><br/>
+
     <p class="white-block">
         bower install canvas-text-wrapper<br/>
         npm install canvas-text-wrapper
