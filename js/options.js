@@ -4,7 +4,7 @@ var optionsArr = [
 		font: 'bold 25px Arial, sans-serif',
 		textAlign: 'center',
 		lineBreak: 'word',
-		lineHeight: 1.6
+		lineHeight: "160%"
 	},
 	{
 		txt: 'Center text block horizontally and vertically',
