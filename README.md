@@ -42,7 +42,7 @@ NOTE: if a single word is too long to fit the width with specified font size, it
 ```
 
 ##Usage
-Use context settings such as "fillStyle", "lineWidth" or "strokeStyle" before using CanvasTextWrapper like so:
+Configure context settings properties "fillStyle", "lineWidth" or "strokeStyle" before using CanvasTextWrapper like so:
 ``` 
 var canvas = document.getElementById("#canvasText");
 canvas.width = 200;
