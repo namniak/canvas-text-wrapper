@@ -54,7 +54,7 @@
         </li>
         <li>
             <div class="emph">verticalAlign</div>
-            (String) - vertical alignment of the whole block of text
+            (String) - vertical alignment of the whole text block
             <ul class="values">
                 <li>"top"</li>
                 <li>"middle"</li>
@@ -63,11 +63,11 @@
         </li>
         <li>
             <div class="emph">paddingX</div>
-            (Number) - horizontal padding (in px) set equally on both, left and right sides of the container
+            (Number) - horizontal padding (in px) set equally on both, left and right sides
         </li>
         <li>
             <div class="emph">paddingY</div>
-            (Number) - vertical padding (in px) set equally on both, top and bottom sides of the container
+            (Number) - vertical padding (in px) set equally on both, top and bottom sides
         </li>
         <li>
             <div class="emph">fitParent</div>
@@ -95,11 +95,12 @@
         </li>
         <li>
             <div class="emph">strokeText</div>
-            (Boolean) - outline text based on context configuration
+            (Boolean) - if enabled, all lines match the same width with flexed spaces between words (one-word lines are
+            ignored)
         </li>
         <li>
             <div class="emph">justifyLines</div>
-            (Boolean) - flex spaces between words so all lines match the same width (one-word lines are skipped).
+            (Boolean) - if enabled, text breaks on every new line character "\n"
         </li>
         <p>
             NOTE: if a single word is too long to fit the width with specified font size, it will break on any letter
@@ -120,14 +121,16 @@
         <strong>lineBreak</strong>: "auto",
         <strong>sizeToFill</strong>: false,
         <strong>allowNewLine</strong>: true,
-        <strong>justifyLines</strong>: false
+        <strong>justifyLines</strong>: false,
+        <strong>strokeText</strong>: false
     }
     </pre>
 
     <h2>Usage</h2><br/>
 
     <p>
-        Use context settings such as "fillStyle", "lineWidth" or "strokeStyle" before using CanvasTextWrapper like so:
+        Configure context settings properties such as "fillStyle", "lineWidth" or "strokeStyle" before using
+        CanvasTextWrapper like so:
     </p>
 
     <pre class="white-block">
