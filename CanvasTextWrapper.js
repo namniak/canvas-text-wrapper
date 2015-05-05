@@ -52,7 +52,12 @@
 
 	CanvasTextWrapper.prototype = {
 		_init: function() {
-			this.fontSize = parseInt(this.font.replace(/^\D+/g,''),10) || 18;
+			/* Substituting this line that causing a bug with font-weight numeric values	*/
+			//this.fontSize = parseInt(this.font.replace(/^\D+/g,''),10) || 18;
+
+			/* This line allow font values like : "italic 500 25px" to preserve both numeric a literal value of font-weight*/
+			this.fontSize = this.font.match(/\d+(px|em|\%)/g) ? +this.font.match(/\d+(px|em|\%)/g)[0].match(/\d+/g) : 18;
+
 			this.textBlockHeight = 0;
 			this.lines = [];
 			this.newLineIndexes = [];
