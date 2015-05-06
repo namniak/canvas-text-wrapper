@@ -5,7 +5,7 @@ document.onreadystatechange = function() {
 			var container = document.getElementsByTagName('section')[0];
 			var w = 448;
 			var h = 250;
-			var options = optionsArr;
+			var options = model;
 
 			createExamples();
 
@@ -23,7 +23,7 @@ document.onreadystatechange = function() {
 					canvas.height = h;
 					context = canvas.getContext('2d');
 					context.lineWidth = 2;
-					context.strokeStyle = 'red';
+					context.strokeStyle = 'yellow';
 					CanvasTextWrapper(canvas,(options[i].txt),options[i]);
 
 					var hint = document.createElement('div');
