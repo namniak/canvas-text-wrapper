@@ -24,8 +24,8 @@ new CanvasTextWrapper(HTMLCanvasElement, String [, options]);
 NOTE: if a single word is too long to fit the width with specified font size, it will break on any letter unless ```sizeToFill``` option is enabled.
 
 ##Defaults
-``` 
-   { 
+```
+   {
         font: "18px Arial, sans-serif",
         lineHeight: 1,
         textAlign: "left",
@@ -37,13 +37,14 @@ NOTE: if a single word is too long to fit the width with specified font size, it
         strokeText: false
         sizeToFill: false,
         allowNewLine: true,
-        justifyLines: false
+        justifyLines: false,
+        background: "white"
     }
 ```
 
 ##Usage
 Configure context settings properties such as "fillStyle", "lineWidth" or "strokeStyle" before using CanvasTextWrapper like so:
-``` 
+```
 var canvas = document.getElementById("#canvasText");
 canvas.width = 200;
 canvas.height = 200;
