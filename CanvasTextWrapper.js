@@ -5,7 +5,7 @@
  *  Copyright (c) 2014 Vadim Namniak
  */
 
-(function() {
+(function(root) {
 	'use strict';
 
 	var EL_WIDTH,EL_HEIGHT,MAX_TXT_WIDTH,MAX_TXT_HEIGHT;
@@ -284,5 +284,9 @@
 		}
 	};
 
-	window.CanvasTextWrapper = CanvasTextWrapper;
-})();
+  if ('module' in root && 'exports' in module) {
+    module.exports = CanvasTextWrapper;
+  } else {
+    root.CanvasTextWrapper = CanvasTextWrapper;
+  }
+})(this);
