@@ -242,7 +242,7 @@
 			if (isNaN(fontSize))
 				throw new TypeError('Cannot parse "font".');
 
-			if (isNaN(opts.lineHeight))
+			if (isNaN(lineHeight))
 				throw new TypeError('Cannot parse "lineHeight".');
 
 			if (opts.textAlign.toLocaleLowerCase() !== 'left' && opts.textAlign.toLocaleLowerCase() !== 'center' && opts.textAlign.toLocaleLowerCase() !== 'right')
