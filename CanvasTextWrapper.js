@@ -1,8 +1,7 @@
 /*! CanvasTextWrapper
  *  https://github.com/namniak/CanvasTextWrapper
- *  Version:  0.3.0
+ *  Version:  0.4.0
  *  MIT License (http://www.opensource.org/licenses/mit-license.html)
- *  Copyright (c) 2014 Vadim Namniak
  */
 
 (function(root) {
