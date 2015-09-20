@@ -7,7 +7,7 @@
 
 (function (root) {
 
-	function CanvasTextWrapper(canvas, text, opts) {
+	function CanvasTextWrapper(canvas, text, options) {
 		'use strict';
 
 		var defaults = {
@@ -25,11 +25,11 @@
 			strokeText: false       // text is stroked according to context configuration
 		};
 
-		opts = opts || {};
+		var opts = {};
 
 		for (var property in defaults) {
 			if (defaults.hasOwnProperty(property)) {
-				opts[property] = (opts && opts[property]) ? opts[property] : defaults[property];
+				opts[property] = (options && options[property]) ? options[property] : defaults[property];
 			}
 		}
 
