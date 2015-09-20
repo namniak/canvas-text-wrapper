@@ -3,7 +3,7 @@ CanvasTextWrapper
 
 ##Syntax
 ```
-new CanvasTextWrapper(HTMLCanvasElement, String [, options]);
+CanvasTextWrapper(HTMLCanvasElement, String [, options]);
 ```
 
 ```options``` - is an object with the following available properties and values:
