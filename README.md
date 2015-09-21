@@ -1,7 +1,7 @@
 CanvasTextWrapper
 =================
 
-##Syntax
+# Syntax
 ```
 CanvasTextWrapper(HTMLCanvasElement, String [, options]);
 ```
@@ -23,7 +23,7 @@ CanvasTextWrapper(HTMLCanvasElement, String [, options]);
 
 NOTE: if a single word is too long to fit the width with specified font size, it will break on any letter unless ```sizeToFill``` option is enabled.
 
-##Defaults
+# Defaults
 ``` 
    { 
         font: "18px Arial, sans-serif",
@@ -41,7 +41,7 @@ NOTE: if a single word is too long to fit the width with specified font size, it
     }
 ```
 
-##Usage
+# Usage
 Configure context settings properties such as "fillStyle", "lineWidth" or "strokeStyle" before using CanvasTextWrapper like so:
 ``` 
 var CanvasTextWrapper = require('canvas-text-wrapper').CanvasTextWrapper;
@@ -55,13 +55,12 @@ context.strokeStyle = "#ff0000";
 CanvasTextWrapper(canvas,"Hello");    //default options will apply
 ```
 
-##Examples
+# Examples
 http://namniak.github.io/CanvasTextWrapper/
 
-##Installation
+# Installation
 
 ```
 bower install canvas-text-wrapper
-
-npm install canvas-text-wrapper
+npm i canvas-text-wrapper
 ```
