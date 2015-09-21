@@ -1,9 +1,10 @@
 {
   "name": "canvas-text-wrapper",
   "description": "Pure JavaScript canvas text wrapper that automatically splits a string into lines on specified rule with alignment and padding.",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "license": "MIT",
   "main": "CanvasTextWrapper.min.js",
+  "keywords": ["canvas", "canvas text", " text", "split"],
   "homepage": "http://namniak.github.io/CanvasTextWrapper/",
   "repository": {
     "type": "git",
