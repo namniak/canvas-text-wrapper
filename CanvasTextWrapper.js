@@ -73,6 +73,7 @@
 
 				setFont(--fontSize);
 				lineHeight = fontSize;
+				wrap();
 			} else {
 				wrap();
 			}
