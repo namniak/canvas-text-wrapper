@@ -1,10 +1,3 @@
-/*! CanvasTextWrapper
- *  https://github.com/namniak/CanvasTextWrapper
- *  Version:  0.4.0
- *  MIT License (http://www.opensource.org/licenses/mit-license.html)
- */
-
-
 (function (root) {
 
 	function CanvasTextWrapper(canvas, text, options) {
@@ -73,6 +66,7 @@
 
 				setFont(--fontSize);
 				lineHeight = fontSize;
+				wrap();
 			} else {
 				wrap();
 			}

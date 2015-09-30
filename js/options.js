@@ -1,7 +1,7 @@
 var model = [
 	{
 		txt: 'Break text on every next word',
-		font: 'italic 800 36px Arial, sans-serif',
+		font: 'italic 800 25px Arial, sans-serif',
 		textAlign: 'center',
 		lineBreak: 'word',
 		lineHeight: "160%"
