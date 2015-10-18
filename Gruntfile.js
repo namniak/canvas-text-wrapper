@@ -1,27 +1,27 @@
 module.exports = function (grunt) {
 
-    var saveLicense = require('uglify-save-license');
-    // project configuration
-    grunt.initConfig({
-        pkg: grunt.file.readJSON('package.json'),
+	var saveLicense = require('uglify-save-license');
+	// project configuration
+	grunt.initConfig({
+		pkg: grunt.file.readJSON('package.json'),
 
-        uglify: {
-            my_target: {
-                options: {
-                    preserveComments: saveLicense
-                },    
-                src: ['CanvasTextWrapper.js'],
-                dest: 'CanvasTextWrapper.min.js' 
-            }
-        }
-    });
+		uglify: {
+			my_target: {
+				options: {
+					preserveComments: saveLicense
+				},
+				src: ['canvas-text-wrapper.js'],
+				dest: 'canvas-text-wrapper.min.js'
+			}
+		}
+	});
 
-    // load plugins
-    grunt.loadNpmTasks('uglify-save-license');
-    grunt.loadNpmTasks('grunt-contrib-uglify');
+	// load plugins
+	grunt.loadNpmTasks('uglify-save-license');
+	grunt.loadNpmTasks('grunt-contrib-uglify');
 
-    // default tasks.
-    grunt.registerTask('default', [
-        'uglify'
-    ]);
+	// default tasks.
+	grunt.registerTask('default', [
+		'uglify'
+	]);
 };

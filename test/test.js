@@ -1,4 +1,4 @@
-var CanvasTextWrapper = require('../CanvasTextWrapper').CanvasTextWrapper;
+var CanvasTextWrapper = require('../canvas-text-wrapper.min.js').CanvasTextWrapper;
 
 var body = document.getElementsByTagName('body')[0];
 body.style.margin = 0;
