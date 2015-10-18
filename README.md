@@ -61,7 +61,7 @@ CanvasTextWrapper(canvas, "Hello");    //default options will apply
 ```
 
 ## Test
-In terminal go to CanvasTextWrapper folder and run ```npm t```
+In terminal go to canvas-text-wrapper folder and run ```npm t```
 
 
 ## Examples
