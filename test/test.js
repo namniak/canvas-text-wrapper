@@ -1,4 +1,4 @@
-var CanvasTextWrapper = require('../canvas-text-wrapper.min.js').CanvasTextWrapper;
+var CanvasTextWrapper = require('../canvas-text-wrapper.js').CanvasTextWrapper;
 
 var body = document.getElementsByTagName('body')[0];
 body.style.margin = 0;
@@ -9,6 +9,7 @@ canvas.height = 600;
 canvas.style.position = 'absolute';
 canvas.style.left = '50%';
 canvas.style.top = '50%';
+canvas.style.border = '1px solid #212121';
 canvas.style.transform = 'translateX(-50%) translateY(-50%)';
 
 body.appendChild(canvas);
@@ -23,7 +24,8 @@ ctx.fillStyle = gradient;
 var opts = {
 	sizeToFill: true,
 	textAlign: 'center',
-	verticalAlign: 'middle'
+	verticalAlign: 'middle',
+	paddingX: 20
 };
 
 CanvasTextWrapper(canvas, 'What an awesome library!', opts);

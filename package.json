@@ -1,7 +1,7 @@
 {
   "name": "canvas-text-wrapper",
   "description": "Split canvas text into lines on specified rule with optional alignment, padding, and more.",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "license": "MIT",
   "main": "canvas-text-wrapper.min.js",
   "keywords": [
