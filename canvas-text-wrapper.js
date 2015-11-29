@@ -1,6 +1,6 @@
 /*! canvas-text-wrapper
  *  https://github.com/namniak/canvas-text-wrapper
- *  Version:  0.6.4
+ *  Version:  0.6.5
  *  MIT License (http://www.opensource.org/licenses/mit-license.html)
  */
 
@@ -53,7 +53,6 @@
       canvas.height = canvasHeight * scale;
       canvas.style.width = canvasWidth * scale * 0.5 + 'px';
       canvas.style.height = canvasHeight * scale * 0.5 + 'px';
-      context.scale(scale, scale);
 
       // restore context settings
       for (var key in tempCtx) {
@@ -63,6 +62,8 @@
 
         }
       }
+
+      context.scale(scale, scale);
     }
 
     var EL_WIDTH = (!opts.fitParent ? canvas.width : canvas.parentNode.clientWidth) / scale;
@@ -78,12 +79,10 @@
     var lineHeight = 0;
     var fontParts;
 
-
     setFont(fontSize);
     setLineHeight();
     validate();
     render();
-
 
     function setFont(fontSize) {
       if (!fontParts) fontParts = (!opts.sizeToFill) ? opts.font.split(/\b\d+px\b/i) : context.font.split(/\b\d+px\b/i);

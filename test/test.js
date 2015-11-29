@@ -22,10 +22,10 @@ gradient.addColorStop('0.7', 'purple');
 ctx.fillStyle = gradient;
 
 var opts = {
-	sizeToFill: true,
-	textAlign: 'center',
-	verticalAlign: 'middle',
-	paddingX: 20
+  sizeToFill: true,
+  textAlign: 'center',
+  verticalAlign: 'middle',
+  paddingX: 20
 };
 
 CanvasTextWrapper(canvas, 'What an awesome library!', opts);
