@@ -9,7 +9,8 @@
     "canvas text",
     "text",
     "split",
-    "wrap"
+    "wrap",
+    "hdpi canvas"
   ],
   "homepage": "http://namniak.github.io/canvas-text-wrapper/",
   "repository": {
