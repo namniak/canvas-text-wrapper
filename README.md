@@ -1,7 +1,9 @@
 canvas-text-wrapper
 =================
+#v 0.6.0
 
-Split canvas text into lines on specified rule with optional alignment, padding, and more.
+Split canvas text into lines on specified rule with optional alignment, padding, and more. Supports HDPI screens.
+
 
 ## Syntax
 ```
@@ -24,11 +26,12 @@ width/height
 - ```strokeText:``` (Boolean) - outline text based on context configuration
 - ```justifyLines:``` (Boolean) - if enabled, all lines match the same width with flexed spaces between words (one-word lines are ignored).
 - ```allowNewLine:``` (Boolean) if enabled, the text breaks on every new line character "\n" otherwise it'll be considered as a space
+- ```renderHDPI:``` (Boolean) if enabled, text is rendered based on device pixel ratio for high-DPI screens
 
 NOTE: if a single word is too long to fit the width with specified font size, it will break on any letter unless ```sizeToFill``` option is enabled.
 
 ## Default options
-``` 
+```javascript
    { 
         font: "18px Arial, sans-serif",
         lineHeight: 1,
@@ -41,14 +44,15 @@ NOTE: if a single word is too long to fit the width with specified font size, it
         strokeText: false
         sizeToFill: false,
         allowNewLine: true,
-        justifyLines: false
+        justifyLines: false,
+        renderHDPI: true
     }
 ```
 
 ## Usage
 Configure context settings properties such as "fillStyle", "lineWidth" or "strokeStyle" before using CanvasTextWrapper like so:
 
-```
+```javascript
 var CanvasTextWrapper = require('canvas-text-wrapper').CanvasTextWrapper;
 
 var canvas = document.getElementById("#canvasText");
@@ -57,18 +61,18 @@ canvas.height = 200;
 context = canvas.getContext("2d");
 context.lineWidth = 2;
 context.strokeStyle = "#ff0000";
-CanvasTextWrapper(canvas, "Hello");    //default options will apply
+CanvasTextWrapper(canvas, "Hello");    // default options will apply
 ```
 
 ## Test
-In terminal go to ```canvas-text-wrapper``` folder and run ```npm t```
+In terminal go to ```canvas-text-wrapper``` folder do ```npm i``` and run ```npm t```
 
 
 ## Examples
 [see here](http://namniak.github.io/canvas-text-wrapper/)
 
 ## Installation
-```
+```sh
 bower install canvas-text-wrapper
 npm i canvas-text-wrapper --save
 ```

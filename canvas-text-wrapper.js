@@ -1,6 +1,6 @@
 /*! canvas-text-wrapper
  *  https://github.com/namniak/canvas-text-wrapper
- *  Version:  0.5.1
+ *  Version:  0.6.0
  *  MIT License (http://www.opensource.org/licenses/mit-license.html)
  */
 
@@ -22,23 +22,40 @@
       paddingX: 0,            // 0px left & right text padding relatively to canvas or its container
       paddingY: 0,            // 0px top & bottom text padding relatively to canvas or its container
       fitParent: false,       // text is set to fit canvas width
-      strokeText: false       // text is stroked according to context configuration
+      strokeText: false,      // text is stroked according to context configuration,
+      renderHDPI: true        // enable proper text rendering on high-DPI screens
     };
 
     var opts = {};
 
-    for (var property in defaults) {
-      if (defaults.hasOwnProperty(property)) {
-        opts[property] = (options && options[property]) ? options[property] : defaults[property];
-      }
+    for (var key in defaults) {
+      opts[key] = options.hasOwnProperty(key) ? options[key] : defaults[key];
     }
 
     var context = canvas.getContext('2d');
     context.font = opts.font;
     context.textBaseline = 'bottom';
 
-    var EL_WIDTH = (opts.fitParent === false) ? canvas.width : canvas.parentNode.clientWidth;
-    var EL_HEIGHT = (opts.fitParent === false) ? canvas.height : canvas.parentNode.clientHeight;
+    var scale = 1;
+    if (opts.renderHDPI && window.devicePixelRatio) {
+	    var lineWidth = context.lineWidth;
+	    var strokeStyle = context.strokeStyle;
+      var canvasWidth = canvas.width;
+      var canvasHeight = canvas.height;
+      scale = window.devicePixelRatio;
+
+      canvas.width = canvasWidth * scale;
+      canvas.height = canvasHeight * scale;
+      canvas.style.width = canvasWidth * scale * 0.5 + 'px';
+      canvas.style.height = canvasHeight * scale * 0.5 + 'px';
+      context.scale(scale, scale);
+
+	    context.lineWidth = lineWidth;
+	    context.strokeStyle = strokeStyle;
+    }
+
+    var EL_WIDTH = (!opts.fitParent ? canvas.width : canvas.parentNode.clientWidth) / scale;
+    var EL_HEIGHT = (!opts.fitParent ? canvas.height : canvas.parentNode.clientHeight) / scale;
     var MAX_TXT_WIDTH = EL_WIDTH - (opts.paddingX * 2);
     var MAX_TXT_HEIGHT = EL_HEIGHT - (opts.paddingY * 2);
 
@@ -270,6 +287,9 @@
 
       if (typeof opts.strokeText !== 'boolean')
         throw new TypeError('Property "strokeText" must be a Boolean.');
+
+	    if (typeof opts.renderHDPI !== 'boolean')
+		    throw new TypeError('Property "renderHDPI" must be a Boolean.');
     }
   }
 
