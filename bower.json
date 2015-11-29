@@ -1,6 +1,6 @@
 {
   "name": "canvas-text-wrapper",
-  "version": "0.5.1",
+  "version": "0.6.4",
   "ignore": [
     "**/.*",
     "**/*.log",

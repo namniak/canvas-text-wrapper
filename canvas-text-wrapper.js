@@ -1,6 +1,6 @@
 /*! canvas-text-wrapper
  *  https://github.com/namniak/canvas-text-wrapper
- *  Version:  0.6.3
+ *  Version:  0.6.4
  *  MIT License (http://www.opensource.org/licenses/mit-license.html)
  */
 
@@ -38,8 +38,13 @@
 
     var scale = 1;
     if (opts.renderHDPI && window.devicePixelRatio) {
-	    var lineWidth = context.lineWidth;
-	    var strokeStyle = context.strokeStyle;
+      var tempCtx = {};
+
+      // store context settings in a temp object before scaling otherwise they will be lost
+      for (var key in context) {
+        tempCtx[key] = context[key];
+      }
+
       var canvasWidth = canvas.width;
       var canvasHeight = canvas.height;
       scale = window.devicePixelRatio;
@@ -50,8 +55,14 @@
       canvas.style.height = canvasHeight * scale * 0.5 + 'px';
       context.scale(scale, scale);
 
-	    context.lineWidth = lineWidth;
-	    context.strokeStyle = strokeStyle;
+      // restore context settings
+      for (var key in tempCtx) {
+        try {
+          context[key] = tempCtx[key];
+        } catch (e) {
+
+        }
+      }
     }
 
     var EL_WIDTH = (!opts.fitParent ? canvas.width : canvas.parentNode.clientWidth) / scale;
@@ -285,8 +296,8 @@
       if (typeof opts.strokeText !== 'boolean')
         throw new TypeError('Property "strokeText" must be a Boolean.');
 
-	    if (typeof opts.renderHDPI !== 'boolean')
-		    throw new TypeError('Property "renderHDPI" must be a Boolean.');
+      if (typeof opts.renderHDPI !== 'boolean')
+        throw new TypeError('Property "renderHDPI" must be a Boolean.');
     }
   }
 

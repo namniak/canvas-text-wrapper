@@ -1,6 +1,6 @@
 canvas-text-wrapper
 =================
-##v0.6.3
+## v0.6.4
 
 
 ## Syntax
@@ -63,8 +63,8 @@ CanvasTextWrapper(canvas, "Hello");    // default options will apply
 ```
 
 ## Test
-In terminal go to ```canvas-text-wrapper``` folder do ```npm i``` and run ```npm t```
-
+In terminal go to ```canvas-text-wrapper``` folder do ```npm i``` and run ```npm t```. 
+NOTE: Test requires ```beefy``` to be installed globally [beefy](http://didact.us/beefy/)
 
 ## Examples
 [see here](http://namniak.github.io/canvas-text-wrapper/)
