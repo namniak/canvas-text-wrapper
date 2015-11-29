@@ -36,20 +36,9 @@
     context.font = opts.font;
     context.textBaseline = 'bottom';
 
-    var devicePixelRatio = window.devicePixelRatio || 1,
-      backingStoreRatio = context.webkitBackingStorePixelRatio ||
-        context.mozBackingStorePixelRatio ||
-        context.msBackingStorePixelRatio ||
-        context.oBackingStorePixelRatio ||
-        context.backingStorePixelRatio || 1;
-
-
     var scale = 1;
     if (opts.renderHDPI && window.devicePixelRatio) {
       var tempCtx = {};
-
-      canvas.style.width = '100%';
-      canvas.style.height = '100%';
 
       // store context settings in a temp object before scaling otherwise they will be lost
       for (var key in context) {
