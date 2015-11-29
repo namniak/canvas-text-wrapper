@@ -22,8 +22,8 @@ document.onreadystatechange = function () {
 					canvas.width = w;
 					canvas.height = h;
 					context = canvas.getContext('2d');
-					context.lineWidth = 10;
-					context.strokeStyle = 'yellow';
+					context.lineWidth = 1;
+					context.strokeStyle = 'red';
 
 					CanvasTextWrapper(canvas, (options[i].txt), options[i]);
 

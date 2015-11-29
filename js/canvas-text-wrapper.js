@@ -36,13 +36,10 @@
 		context.font = opts.font;
 		context.textBaseline = 'bottom';
 
-		context.lineWidth = 2 / Math.max(2, 2);
-
-		var lineWidth = context.lineWidth;
-		var strokeStyle = context.strokeStyle;
-
 		var scale = 1;
 		if (opts.renderHDPI && window.devicePixelRatio) {
+			var lineWidth = context.lineWidth;
+			var strokeStyle = context.strokeStyle;
 			var canvasWidth = canvas.width;
 			var canvasHeight = canvas.height;
 			scale = window.devicePixelRatio;
@@ -52,10 +49,10 @@
 			canvas.style.width = canvasWidth * scale * 0.5 + 'px';
 			canvas.style.height = canvasHeight * scale * 0.5 + 'px';
 			context.scale(scale, scale);
-		}
 
-		context.lineWidth = lineWidth;
-		context.strokeStyle = strokeStyle;
+			context.lineWidth = lineWidth;
+			context.strokeStyle = strokeStyle;
+		}
 
 		var EL_WIDTH = (!opts.fitParent ? canvas.width : canvas.parentNode.clientWidth) / scale;
 		var EL_HEIGHT = (!opts.fitParent ? canvas.height : canvas.parentNode.clientHeight) / scale;
@@ -290,6 +287,9 @@
 
 			if (typeof opts.strokeText !== 'boolean')
 				throw new TypeError('Property "strokeText" must be a Boolean.');
+
+			if (typeof opts.renderHDPI !== 'boolean')
+				throw new TypeError('Property "renderHDPI" must be a Boolean.');
 		}
 	}
 
