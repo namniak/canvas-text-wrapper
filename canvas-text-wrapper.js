@@ -232,9 +232,6 @@
     }
 
     function validate() {
-      if (!(canvas instanceof HTMLCanvasElement))
-        throw new TypeError('The first parameter must be an instance of HTMLCanvasElement.');
-
       if (typeof text !== 'string')
         throw new TypeError('The second parameter must be a String.');
 
