@@ -37,7 +37,7 @@
     context.textBaseline = 'bottom';
 
     var scale = 1;
-    if (opts.renderHDPI && window.devicePixelRatio) {
+    if (opts.renderHDPI && global.devicePixelRatio) {
       var tempCtx = {};
 
       // store context settings in a temp object before scaling otherwise they will be lost
@@ -47,7 +47,7 @@
 
       var canvasWidth = canvas.width;
       var canvasHeight = canvas.height;
-      scale = window.devicePixelRatio;
+      scale = global.devicePixelRatio;
 
       canvas.width = canvasWidth * scale;
       canvas.height = canvasHeight * scale;
