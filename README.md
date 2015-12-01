@@ -1,6 +1,6 @@
 canvas-text-wrapper
 =================
-v0.6.5
+v0.6.6
 
 
 ## Syntax

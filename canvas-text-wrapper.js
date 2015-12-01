@@ -1,6 +1,6 @@
 /*! canvas-text-wrapper
  *  https://github.com/namniak/canvas-text-wrapper
- *  Version:  0.6.5
+ *  Version:  0.6.6
  *  MIT License (http://www.opensource.org/licenses/mit-license.html)
  */
 
