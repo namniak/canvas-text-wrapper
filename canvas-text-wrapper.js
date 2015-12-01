@@ -1,6 +1,6 @@
 /*! canvas-text-wrapper
  *  https://github.com/namniak/canvas-text-wrapper
- *  Version:  0.6.6
+ *  Version:  0.6.7
  *  MIT License (http://www.opensource.org/licenses/mit-license.html)
  */
 
@@ -37,7 +37,9 @@
     context.textBaseline = 'bottom';
 
     var scale = 1;
-    if (opts.renderHDPI && global.devicePixelRatio) {
+    var devicePixelRatio = (typeof global !== 'undefined') ? global.devicePixelRatio : root.devicePixelRatio;
+
+    if (opts.renderHDPI && devicePixelRatio > 1) {
       var tempCtx = {};
 
       // store context settings in a temp object before scaling otherwise they will be lost
@@ -47,7 +49,7 @@
 
       var canvasWidth = canvas.width;
       var canvasHeight = canvas.height;
-      scale = global.devicePixelRatio;
+      scale = devicePixelRatio;
 
       canvas.width = canvasWidth * scale;
       canvas.height = canvasHeight * scale;
