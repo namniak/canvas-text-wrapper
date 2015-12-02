@@ -102,6 +102,15 @@
             <div class="emph">justifyLines</div>
             (Boolean) - if enabled, text breaks on every new line character "\n"
         </li>
+        <li>
+            <div class="emph">allowNewLine</div>
+            (Boolean) - if enabled, the text breaks on every new line character "\n" otherwise it'll be considered as a
+            space
+        </li>
+        <li>
+            <div class="emph">renderHDPI</div>
+            (Boolean) - if enabled, text is rendered based on device pixel ratio for high-DPI screens
+        </li>
         <p>
             NOTE: if a single word is too long to fit the width with specified font size, it will break on any letter
             unless "sizeToFill" option is enabled.
@@ -122,7 +131,8 @@
         <strong>sizeToFill</strong>: false,
         <strong>allowNewLine</strong>: true,
         <strong>justifyLines</strong>: false,
-        <strong>strokeText</strong>: false
+        <strong>strokeText</strong>: false,
+        <strong>renderHDPI</strong>: true
     }
     </pre>
 
