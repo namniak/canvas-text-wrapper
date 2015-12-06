@@ -16,7 +16,7 @@
 
     <p class="description">
         Pure JavaScript canvas text wrapper that automatically splits a string into lines on specified rule with
-        alignment and padding.
+        alignment and padding. Supports HDPI screens;
     </p>
 </header>
 <article>
@@ -89,22 +89,21 @@
             <div class="emph">sizeToFill</div>
             (Boolean) - auto font size to fill text container
             <ul class="values">
-                <li>true - ignore given font size/line height and resize text to fill its padded container</li>
+                <li>true - ignore given font size and line height and resize text to fill its padded container</li>
                 <li>false - use specified or default font size</li>
             </ul>
         </li>
         <li>
             <div class="emph">strokeText</div>
-            (Boolean) - if enabled, all lines match the same width with flexed spaces between words (one-word lines are
-            ignored)
+            (Boolean) - if enabled, all lines match the same width with flexed spaces between words
         </li>
         <li>
             <div class="emph">justifyLines</div>
-            (Boolean) - if enabled, text breaks on every new line character "\n"
+            (Boolean) - if enabled, text breaks on every new line character - "\n"
         </li>
         <li>
             <div class="emph">allowNewLine</div>
-            (Boolean) - if enabled, the text breaks on every new line character "\n" otherwise it'll be considered as a
+            (Boolean) - if enabled, the text breaks on every new line character "\n" otherwise it's considered as a
             space
         </li>
         <li>
