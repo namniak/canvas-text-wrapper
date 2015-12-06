@@ -30,7 +30,7 @@ var model = [
 		justifyLines: true
 	},
 	{
-		txt: 'Apply text stroke is based on context settings',
+		txt: 'Apply text stroke based on context settings',
 		font: 'bold 40px Arial, sans-serif',
 		textAlign: 'right',
 		paddingX: 25,
