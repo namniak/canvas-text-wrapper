@@ -1,6 +1,6 @@
 /*! canvas-text-wrapper
  *  https://github.com/namniak/canvas-text-wrapper
- *  Version:  0.6.7
+ *  Version:  0.7.0
  *  MIT License (http://www.opensource.org/licenses/mit-license.html)
  */
 
@@ -169,17 +169,21 @@
         lines[j] = '';
 
         if (opts.lineBreak === 'auto') {
-          while ((context.measureText(lines[j] + words[i]).width <= MAX_TXT_WIDTH) && (i < words.length)) {
+          if (context.measureText(lines[j] + words[i]).width > MAX_TXT_WIDTH) {
+            break;
+          } else {
+            while ((context.measureText(lines[j] + words[i]).width <= MAX_TXT_WIDTH) && (i < words.length)) {
 
-            lines[j] += words[i] + ' ';
-            i++;
+              lines[j] += words[i] + ' ';
+              i++;
 
-            if (opts.allowNewLine) {
-              for (var k = 0; k < newLineIndexes.length; k++) {
-                if (newLineIndexes[k] === i) {
-                  j++;
-                  lines[j] = '';
-                  break;
+              if (opts.allowNewLine) {
+                for (var k = 0; k < newLineIndexes.length; k++) {
+                  if (newLineIndexes[k] === i) {
+                    j++;
+                    lines[j] = '';
+                    break;
+                  }
                 }
               }
             }
