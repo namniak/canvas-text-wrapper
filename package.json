@@ -1,16 +1,17 @@
 {
   "name": "canvas-text-wrapper",
   "description": "Split canvas text into lines on specified rule with optional alignment, padding, and more. Supports HDPI screens.",
-  "version": "0.7.0",
+  "version": "0.8.0",
   "license": "MIT",
-  "main": "canvas-text-wrapper.min.js",
+  "main": "canvas-text-wrapper.js",
   "keywords": [
     "canvas",
     "canvas text",
     "text",
     "split",
     "wrap",
-    "hdpi canvas"
+    "hdpi canvas",
+    "text split"
   ],
   "homepage": "http://namniak.github.io/canvas-text-wrapper/",
   "repository": {
