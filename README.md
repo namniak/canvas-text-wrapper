@@ -14,19 +14,19 @@ __Options:__
  shorthand property
  
  
-```lineHeight:``` (String or Number) - Number means 'n' times font size where 1 is equivalent to '100%'. Also the property can be set in "%" or "px" using String.
+```lineHeight:``` (String or Number) - Number means 'n' times font size where 1 is equivalent to '100%'. Also the property can be set in "%" or "px".
 
 
 ```textAlign:``` (String)- horizontal alignment of each line
-   * ```"left"```
-   * ```"center"```
-   * ```"right"```
+   * 'left'
+   * 'center'
+   * 'right'
 
 
 ```verticalAlign```: (String)- vertical alignment for the whole text block
-   * ```"top"```
-   * ```"middle"```
-   * ```"bottom"```
+   * 'top'
+   * 'middle'
+   * 'bottom'
 
 
 ```paddingX```: (Number) - horizontal padding (in px) that is equally set on left and right
@@ -39,8 +39,8 @@ __Options:__
 
 
 ```lineBreak```: (String) - text split rule
-   * ```"auto"``` - text goes to the next line on a whole word when there's no more room
-   * ```"word"``` - each next word is placed on a new line
+   * "auto" - text goes to the next line on a whole word when there's no more room
+   * "word" - each next word is placed on a new line
 
 
 ```sizeToFill```: (Boolean) - ignore given font size and line height and resize text to fill its padded container
@@ -52,7 +52,7 @@ __Options:__
 ```justifyLines```: (Boolean) - all lines match the same width with flexed spaces between words
 
 
-```allowNewLine```: (Boolean) - the text breaks on new line character, ```'\n'```. Note it doesn't support multiple new lines so ```'\n\n\n'``` will be the same as a single ```'\n'``.
+```allowNewLine```: (Boolean) - the text breaks on new line character '\n'. Note it doesn't support multiple new lines so '\n\n\n' will be the same as a single having '\n'.
 
 
 ```renderHDPI```: (Boolean) - text is rendered based on device pixel ratio
@@ -64,14 +64,14 @@ NOTE: if a single word is too long to fit the width with specified font size, it
 ## Default options
 ```javascript
    { 
-        font: "18px Arial, sans-serif",
+        font: '18px Arial, sans-serif',
         lineHeight: 1,
-        textAlign: "left",
-        verticalAlign: "top",
+        textAlign: 'left',
+        verticalAlign: 'top',
         paddingX: 0,
         paddingY: 0,
         fitParent: false,
-        lineBreak: "auto",
+        lineBreak: 'auto',
         strokeText: false
         sizeToFill: false,
         allowNewLine: true,
@@ -82,19 +82,19 @@ NOTE: if a single word is too long to fit the width with specified font size, it
 
 
 ## Usage
-Configure context properties such as "fillStyle", "lineWidth", "strokeStyle" etc. before passing it to CanvasTextWrapper like so:
+Configure context properties such as ```fillStyle```, ```lineWidth```, ```strokeStyle``` etc. before passing it to CanvasTextWrapper like so:
 
 ```javascript
 var CanvasTextWrapper = require('canvas-text-wrapper').CanvasTextWrapper;
 
-var canvas = document.getElementById("#canvasText");
+var canvas = document.getElementById('#canvasText');
 canvas.width = 200;
 canvas.height = 200;
-context = canvas.getContext("2d");
+context = canvas.getContext('2d');
 context.lineWidth = 2;
-context.strokeStyle = "#ff0000";
+context.strokeStyle = '#ff0000';
 
-CanvasTextWrapper(canvas, "Hello", {strokeText: true});
+CanvasTextWrapper(canvas, 'Hello', {strokeText: true});
 ```
 
 
