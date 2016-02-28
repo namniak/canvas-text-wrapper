@@ -14,7 +14,7 @@ __Options:__
  shorthand property
  
  
-```lineHeight:``` (String or Number) - Number means 'n' times font size where 1 is equivalent to '100%'. Also the property can be set in "%" or "px".
+```lineHeight:``` (String or Number) - Number means 'n' times font size where 1 is equivalent to '100%'. Also the property can be set in '%' or 'px.
 
 
 ```textAlign:``` (String)- horizontal alignment of each line
@@ -39,8 +39,8 @@ __Options:__
 
 
 ```lineBreak```: (String) - text split rule
-   * "auto" - text goes to the next line on a whole word when there's no more room
-   * "word" - each next word is placed on a new line
+   * 'auto' - text goes to the next line on a whole word when there's no more room
+   * 'word' - each next word is placed on a new line
 
 
 ```sizeToFill```: (Boolean) - ignore given font size and line height and resize text to fill its padded container
@@ -52,7 +52,7 @@ __Options:__
 ```justifyLines```: (Boolean) - all lines match the same width with flexed spaces between words
 
 
-```allowNewLine```: (Boolean) - the text breaks on new line character '\n'. Note it doesn't support multiple new lines so '\n\n\n' will be the same as a single having '\n'.
+```allowNewLine```: (Boolean) - the text breaks on new line character '\n'. Note it doesn't support multiple new lines so '\n\n\n' will be the same as having a single '\n'.
 
 
 ```renderHDPI```: (Boolean) - text is rendered based on device pixel ratio
