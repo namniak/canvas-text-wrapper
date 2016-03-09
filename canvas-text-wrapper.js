@@ -158,6 +158,7 @@
     }
 
     function breakText(words) {
+      lines = [];
       for (var i = 0, j = 0; i < words.length; j++) {
         lines[j] = '';
 
