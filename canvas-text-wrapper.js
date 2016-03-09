@@ -158,29 +158,29 @@
     }
 
     function breakText(words) {
+      lines = [];
       for (var i = 0, j = 0; i < words.length; j++) {
         lines[j] = '';
 
-        if (opts.lineBreak === 'auto') {
-          if (context.measureText(lines[j] + words[i]).width > MAX_TXT_WIDTH) {
-            break;
-          } else {
-            while ((context.measureText(lines[j] + words[i]).width <= MAX_TXT_WIDTH) && (i < words.length)) {
+        var inserted = false;
+        while ((opts.lineBreak === 'auto') && (context.measureText(lines[j] + words[i]).width <= MAX_TXT_WIDTH) && (i < words.length)) {
 
-              lines[j] += words[i] + ' ';
-              i++;
+          inserted = true;
+          lines[j] += words[i] + ' ';
+          i++;
 
-              if (opts.allowNewLine) {
-                for (var k = 0; k < newLineIndexes.length; k++) {
-                  if (newLineIndexes[k] === i) {
-                    j++;
-                    lines[j] = '';
-                    break;
-                  }
-                }
+          if (opts.allowNewLine) {
+            for (var k = 0; k < newLineIndexes.length; k++) {
+              if (newLineIndexes[k] === i) {
+                j++;
+                lines[j] = '';
+                break;
               }
             }
           }
+        }
+
+        if (inserted) {
           lines[j] = lines[j].trim();
         } else {
           lines[j] = words[i];
