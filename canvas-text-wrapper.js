@@ -16,7 +16,8 @@
       paddingY: 0,
       fitParent: false,
       strokeText: false,
-      renderHDPI: true
+      renderHDPI: true,
+      textDecoration: 'none'
     };
 
     var opts = {};
@@ -225,6 +226,24 @@
       }
     }
 
+    function underline(text, x, y) {
+      var width = context.measureText(text).width;
+
+      switch (context.textAlign) {
+        case 'center':
+          x -= (width / 2);
+          break;
+        case 'right':
+          x -= width;
+          break;
+      }
+
+      context.beginPath();
+      context.moveTo(x, y);
+      context.lineTo(x + width, y);
+      context.stroke();
+    }
+
     function drawText() {
       for (var i = 0; i < lines.length; i++) {
         setHorizAlign(lines[i]);
@@ -234,6 +253,10 @@
 
         if (opts.strokeText) {
           context.strokeText(lines[i], textPos.x, textPos.y);
+        }
+
+        if (opts.textDecoration.toLocaleLowerCase() === 'underline') {
+          underline(lines[i], textPos.x, textPos.y);
         }
       }
     }
@@ -297,6 +320,9 @@
 
       if (typeof opts.renderHDPI !== 'boolean')
         throw new TypeError('Property "renderHDPI" must be a Boolean.');
+
+      if (opts.textDecoration.toLocaleLowerCase() !== 'none' && opts.textDecoration.toLocaleLowerCase() !== 'underline')
+        throw new TypeError('Property "textDecoration" must be set to either "none" or "underline".');
     }
   }
 
