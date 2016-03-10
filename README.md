@@ -14,7 +14,7 @@ __Options:__
  shorthand property
  
  
-```lineHeight:``` (String or Number) - Number means 'n' times font size where 1 is equivalent to '100%'. Also the property can be set in '%' or 'px.
+```lineHeight:``` (String or Number) - Number means 'n' times font size where 1 is equivalent to '100%'. Also the property can be set in '%' or 'px'.
 
 
 ```textAlign:``` (String)- horizontal alignment of each line
