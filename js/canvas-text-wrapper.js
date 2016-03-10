@@ -1,10 +1,3 @@
-/*! canvas-text-wrapper
- *  https://github.com/namniak/canvas-text-wrapper
- *  Version:  0.6.8
- *  MIT License (http://www.opensource.org/licenses/mit-license.html)
- */
-
-
 (function (root) {
 
   function CanvasTextWrapper(canvas, text, options) {
@@ -12,18 +5,18 @@
 
     var defaults = {
       font: '18px Arial, sans-serif',
-      sizeToFill: false,      // text is resized to fill the container (given font size is ignored)
-      lineHeight: 1,          // default line height equivalent of '100%'
-      allowNewLine: true,     // breaks text on every new line character '\n'
-      lineBreak: 'auto',      // text fills the element's (canvas or parent) width going to a new line on a whole word
-      textAlign: 'left',      // each line of text is aligned left
-      verticalAlign: 'top',   // text lines block is aligned top
-      justifyLines: false,    // lines are not justified
-      paddingX: 0,            // 0px left & right text padding relatively to canvas or its container
-      paddingY: 0,            // 0px top & bottom text padding relatively to canvas or its container
-      fitParent: false,       // text is set to fit canvas width
-      strokeText: false,      // text is stroked according to context configuration,
-      renderHDPI: true        // enable proper text rendering on high-DPI screens
+      sizeToFill: false,
+      lineHeight: 1,
+      allowNewLine: true,
+      lineBreak: 'auto',
+      textAlign: 'left',
+      verticalAlign: 'top',
+      justifyLines: false,
+      paddingX: 0,
+      paddingY: 0,
+      fitParent: false,
+      strokeText: false,
+      renderHDPI: true
     };
 
     var opts = {};
@@ -165,6 +158,7 @@
     }
 
     function breakText(words) {
+      lines = [];
       for (var i = 0, j = 0; i < words.length; j++) {
         lines[j] = '';
 
