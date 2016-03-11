@@ -1,0 +1,18 @@
+{
+  "name": "canvas-text-wrapper",
+  "version": "0.8.3",
+  "ignore": [
+    "**/.*",
+    "**/*.log",
+    "**/*.json",
+    "Gruntfile.js",
+    "examples",
+    "node_modules",
+    "README.md"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/namniak/canvas-text-wrapper.git"
+  },
+  "homepage": "http://namniak.github.io/canvas-text-wrapper/"
+}
