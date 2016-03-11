@@ -60,7 +60,7 @@ __Options:__
 
 ```textDecoration```: (String) - additional text decoration
    * 'none' - no decoration
-   * 'underline' - text is underlined according to `context.strokeStyle`
+   * 'underline' - text is underlined according to `context.strokeStyle` and `context.lineWidth`
 
 
 NOTE: if a single word is too long to fit the width with specified font size, it will break on any letter unless ```sizeToFill``` option is enabled.
