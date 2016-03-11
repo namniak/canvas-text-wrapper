@@ -58,6 +58,11 @@ __Options:__
 ```renderHDPI```: (Boolean) - text is rendered based on device pixel ratio
 
 
+```textDecoration```: (String) - additional text decoration
+   * 'none' - no decoration
+   * 'underline' - text is underlined according to `context.strokeStyle`
+
+
 NOTE: if a single word is too long to fit the width with specified font size, it will break on any letter unless ```sizeToFill``` option is enabled.
 
 
@@ -76,7 +81,8 @@ NOTE: if a single word is too long to fit the width with specified font size, it
         sizeToFill: false,
         allowNewLine: true,
         justifyLines: false,
-        renderHDPI: true
+        renderHDPI: true,
+        textDecoration: 'none'
     }
 ```
 
