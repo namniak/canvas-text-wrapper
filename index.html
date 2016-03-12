@@ -1,122 +1,121 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-    <meta charset="utf-8">
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,600' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/styles.css">
-    <script src="canvas-text-wrapper.js"></script>
-    <script src="js/options.js"></script>
-    <script src="js/examples.js"></script>
-    <title>CanvasTextWrapper</title>
+  <meta charset="utf-8">
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,600' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="canvas-text-wrapper.js"></script>
+  <script src="js/options.js"></script>
+  <script src="js/examples.js"></script>
+  <title>CanvasTextWrapper</title>
 </head>
 <body>
 <header>
-    <p>CanvasTextWrapper</p>
+  <p>canvas-text-wrapper</p>
 
-    <p class="description">
-        Pure JavaScript canvas text wrapper that automatically splits a string into lines on specified rule with
-        alignment and padding. Supports HDPI screens.
-    </p>
+  <p class="description">
+    Split canvas text into lines on specified rule with optional alignment, padding, and more. Supports HDPI screens.
+  </p>
 </header>
 <article>
-    <h2>Syntax</h2><br/>
+  <h2>Syntax</h2><br/>
 
-    <p class="white-block">CanvasTextWrapper(HTMLCanvasElement, String [, Options]);</p><br/>
+  <p class="white-block">CanvasTextWrapper(HTMLCanvasElement, String [, Options]);</p><br/>
 
-    <div>
-        <div class="emph">Options</div>
-        - is an object with the following available properties and values:
-    </div>
-    <ul class="syntax">
-        <li>
-            <div class="emph">font</div>
-            (String) - text style that includes font size in px, weight, font family, etc. Similar to CSS font shorthand
-            property
-        </li>
-        <li>
-            <div class="emph">lineHeight</div>
-            (Number or String)
-            <ul class="values">
-                <li>number - n times font size where 1 is equivalent to '100%'</li>
-                <li>"%"</li>
-                <li>"px"</li>
-            </ul>
-        </li>
-        <li>
-            <div class="emph">textAlign</div>
-            (String) - horizontal alignment of each line
-            <ul class="values">
-                <li>"left"</li>
-                <li>"center"</li>
-                <li>"right"</li>
-            </ul>
-        </li>
-        <li>
-            <div class="emph">verticalAlign</div>
-            (String) - vertical alignment of the whole text block
-            <ul class="values">
-                <li>"top"</li>
-                <li>"middle"</li>
-                <li>"bottom"</li>
-            </ul>
-        </li>
-        <li>
-            <div class="emph">paddingX</div>
-            (Number) - horizontal padding (in px) set equally on both, left and right sides
-        </li>
-        <li>
-            <div class="emph">paddingY</div>
-            (Number) - vertical padding (in px) set equally on both, top and bottom sides
-        </li>
-        <li>
-            <div class="emph">fitParent</div>
-            (Boolean) - parameter that controls which element to fit
-            <ul class="values">
-                <li>true - fit canvas parent's width instead of canvas own width</li>
-                <li>false - fit canvas width</li>
-            </ul>
-        </li>
-        <li>
-            <div class="emph">lineBreak</div>
-            (String) - text split rule
-            <ul class="values">
-                <li>"auto" - text fills padded container going to a next line on a whole word</li>
-                <li>"word" - each next word will be placed on a new line</li>
-            </ul>
-        </li>
-        <li>
-            <div class="emph">sizeToFill</div>
-            (Boolean) - auto font size to fill text container
-            <ul class="values">
-                <li>true - ignore given font size and line height and resize text to fill its padded container</li>
-                <li>false - use specified or default font size</li>
-            </ul>
-        </li>
-        <li>
-            <div class="emph">strokeText</div>
-            (Boolean) - if enabled, all lines match the same width with flexed spaces between words
-        </li>
-        <li>
-            <div class="emph">justifyLines</div>
-            (Boolean) - if enabled, text breaks on every new line character - "\n"
-        </li>
-        <li>
-            <div class="emph">allowNewLine</div>
-            (Boolean) - if enabled, the text breaks on every new line character "\n" otherwise it's considered as a
-            space
-        </li>
-        <li>
-            <div class="emph">renderHDPI</div>
-            (Boolean) - if enabled, text is rendered based on device pixel ratio for high-DPI screens
-        </li>
-        <p>
-            NOTE: if a single word is too long to fit the width with specified font size, it will break on any letter
-            unless "sizeToFill" option is enabled.
-        </p>
-    </ul>
+  <div>
+    <div class="emph">Options</div>
+    - is an object with the following available properties and values:
+  </div>
+  <ul class="syntax">
+    <li>
+      <div class="emph">font</div>
+      (String) - text style that includes font size (in px), font weight, font family, etc. Similar to CSS font
+      shorthand property
+    </li>
+    <li>
+      <div class="emph">lineHeight</div>
+      (Number or String)
+      <ul class="values">
+        <li>number - n times font size where 1 is equivalent to '100%'</li>
+        <li>"%"</li>
+        <li>"px"</li>
+      </ul>
+    </li>
+    <li>
+      <div class="emph">textAlign</div>
+      (String) - horizontal alignment of each line
+      <ul class="values">
+        <li>"left"</li>
+        <li>"center"</li>
+        <li>"right"</li>
+      </ul>
+    </li>
+    <li>
+      <div class="emph">verticalAlign</div>
+      (String) - vertical alignment for the whole text block
+      <ul class="values">
+        <li>"top"</li>
+        <li>"middle"</li>
+        <li>"bottom"</li>
+      </ul>
+    </li>
+    <li>
+      <div class="emph">paddingX</div>
+      (Number) - horizontal padding (in px) that is equally set on left and right
+    </li>
+    <li>
+      <div class="emph">paddingY</div>
+      (Number) - vertical padding (in px) that is equally set on top and bottom
+    </li>
+    <li>
+      <div class="emph">fitParent</div>
+      (Boolean) - fit canvas container's size instead of its own size
+    </li>
+    <li>
+      <div class="emph">lineBreak</div>
+      (String) - text split rule
+      <ul class="values">
+        <li>"auto" - text goes to the next line on a whole word when there's no more room</li>
+        <li>"word" - each next word is placed on a new line</li>
+      </ul>
+    </li>
+    <li>
+      <div class="emph">sizeToFill</div>
+      (Boolean) - ignore given font size and line height and resize text to fill its padded container
+    </li>
+    <li>
+      <div class="emph">strokeText</div>
+      (Boolean) - allow text outline based on canvas context configuration
+    </li>
+    <li>
+      <div class="emph">justifyLines</div>
+      (Boolean) - all lines match the same width with flexed spaces between words
+    </li>
+    <li>
+      <div class="emph">allowNewLine</div>
+      (Boolean) - text breaks on new line character '\n'. Note it doesn't support multiple new lines so '\n\n\n'
+      will be the same as having a single '\n'
+    </li>
+    <li>
+      <div class="emph">renderHDPI</div>
+      (Boolean) - text is rendered based on device pixel ratio
+    </li>
+    <li>
+      <div class="emph">textDecoration</div>
+      (String) - additional text decoration
+      <ul class="values">
+        <li>"none"</li>
+        <li>"underline" - text is underlined according to "context.strokeStyle" and "context.lineWidth"</li>
+      </ul>
+    </li>
+    <p>
+      NOTE: if a single word is too long to fit the width with specified font size, it will break on any letter unless
+      sizeToFill option is enabled.
+    </p>
+  </ul>
 
-    <h2>Default Options</h2><br/>
+  <h2>Default Options</h2><br/>
     <pre class="white-block">
     { 
         <strong>font</strong>: "18px Arial, sans-serif",
@@ -131,16 +130,17 @@
         <strong>allowNewLine</strong>: true,
         <strong>justifyLines</strong>: false,
         <strong>strokeText</strong>: false,
-        <strong>renderHDPI</strong>: true
+        <strong>renderHDPI</strong>: true,
+        <strong>textDecoration</strong>: "none"
     }
     </pre>
 
-    <h2>Usage</h2><br/>
+  <h2>Usage</h2><br/>
 
-    <p>
-        Configure context settings properties such as "fillStyle", "lineWidth" or "strokeStyle" before using
-        CanvasTextWrapper like so:
-    </p>
+  <p>
+    Configure context settings properties such as "fillStyle", "lineWidth" or "strokeStyle" before using
+    CanvasTextWrapper like so:
+  </p>
 
     <pre class="white-block">
         var canvas = document.getElementById("#canvasText");
@@ -152,18 +152,18 @@
         CanvasTextWrapper(canvas, {strokeText: true});
     </pre>
 
-    <h2>Installation</h2><br/>
+  <h2>Installation</h2><br/>
 
-    <p class="white-block">
-        bower install canvas-text-wrapper<br/>
-        npm install canvas-text-wrapper
-    </p>
+  <p class="white-block">
+    npm install canvas-text-wrapper --save<br/>
+    bower install canvas-text-wrapper
+  </p>
 </article>
 <section>
-    <h2>Examples</h2>
+  <h2>Examples</h2>
 </section>
 <footer>
-    &larr;&nbsp;<a href="https://github.com/namniak/CanvasTextWrapper">View on GitHub</a>
+  &larr;&nbsp;<a href="https://github.com/namniak/CanvasTextWrapper">View on GitHub</a>
 </footer>
 </body>
 </html>
