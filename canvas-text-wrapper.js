@@ -114,6 +114,7 @@
       }
 
       setVertAlign();
+      setHorizAlign();
       drawText();
     }
 
@@ -246,8 +247,6 @@
 
     function drawText() {
       for (var i = 0; i < lines.length; i++) {
-        setHorizAlign(lines[i]);
-
         textPos.y = parseInt(textPos.y) + lineHeight;
         context.fillText(lines[i], textPos.x, textPos.y);
 
@@ -261,11 +260,13 @@
       }
     }
 
-    function setHorizAlign(line) {
+    function setHorizAlign() {
+      context.textAlign = opts.textAlign;
+
       if (opts.textAlign == 'center') {
-        textPos.x = (EL_WIDTH - context.measureText(line).width) / 2;
+        textPos.x = EL_WIDTH / 2;
       } else if (opts.textAlign == 'right') {
-        textPos.x = EL_WIDTH - context.measureText(line).width - opts.paddingX;
+        textPos.x = EL_WIDTH - opts.paddingX;
       } else {
         textPos.x = opts.paddingX;
       }
