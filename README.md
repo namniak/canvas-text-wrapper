@@ -8,7 +8,7 @@ CanvasTextWrapper(HTMLCanvasElement, String [, options]);
 
 ## Options
 
-| Property  | Value(s) | Description |
+| Options  | Value | Description |
 | ------------- | ------------- | ------------- |
 | **font**  | *String*  | Text style that includes font size (in px), font weight, font family, etc.  |
 | **lineHeight**  | *String* or *Number* | Number - 'n' times font size where 1 is equivalent to '100%'. Also the property can be set in '%' or 'px'. |
