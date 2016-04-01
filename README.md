@@ -18,7 +18,7 @@ __Options:__
 | **paddingX**  | *Number* | Horizontal padding (in px) that is equally set on left and right sides. |
 | **paddingY**  | *Number* | Vertical padding (in px) that is equally set on top and bottoms. |
 | **fitParent**  | *Boolean* | Fit canvas' container size instead of its own size. |
-| **lineBreak**  | `"auto"` `"word"` |  `"auto"` - Text goes to the next line on a whole word when there is no more room  `"word"` - Each next word is placed on a new line |
+| **lineBreak**  | `"auto"` `"word"` |  `"auto"` - text goes to the next line on a whole word when there's no room  `"word"` - each next word is placed on a new line |
 | **sizeToFill**  | *Boolean* |  Ignore given font size and line height and resize text to fill its padded container. |
 | **strokeText**  | *Boolean* |  Allow text outline based on canvas context configuration. |
 | **justifyLines**  | *Boolean* |  All lines will try to match the same width with flexed spaces between the words. |
