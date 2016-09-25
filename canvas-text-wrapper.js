@@ -6,6 +6,7 @@
     var defaults = {
       font: '18px Arial, sans-serif',
       sizeToFill: false,
+      maxFontSizeToFill: false,
       lineHeight: 1,
       allowNewLine: true,
       lineBreak: 'auto',
@@ -99,9 +100,18 @@
       if (opts.sizeToFill) {
         var wordsCount = text.trim().split(/\s+/).length;
         var newFontSize = 0;
+        var fontSizeHasLimit = opts.maxFontSizeToFill !== false;
 
         do {
-          adjustFontSize(++newFontSize);
+          if (fontSizeHasLimit) {
+            if (++newFontSize <= opts.maxFontSizeToFill) {
+              adjustFontSize(newFontSize);
+            } else {
+              break;
+            }
+          } else {
+            adjustFontSize(++newFontSize);
+          }
         } while (textBlockHeight < MAX_TXT_HEIGHT && (lines.join(' ').split(/\s+/).length == wordsCount));
 
         adjustFontSize(--newFontSize);
