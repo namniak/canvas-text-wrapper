@@ -19,6 +19,7 @@ CanvasTextWrapper(HTMLCanvasElement, String [, options]);
 | **fitParent**  | *Boolean* | Fit canvas' container size instead of its own size. |
 | **lineBreak**  | `"auto"` `"word"` |  `"auto"` - text goes to the next line on a whole word when there's no room  `"word"` - each next word is placed on a new line |
 | **sizeToFill**  | *Boolean* |  Ignore given font size and line height and resize text to fill its padded container. |
+| **maxFontSizeToFill**  | *Number* |  If above option is `true` text won't be bigger than set. |
 | **strokeText**  | *Boolean* |  Allow text outline based on canvas context configuration. |
 | **justifyLines**  | *Boolean* |  All lines will try to match the same width with flexed spaces between the words. |
 | **allowNewLine**  | *Boolean* |  Text breaks on a new line character "\n". Note it doesn't support multiple new lines, so `"\n\n\n"` will be rendered the same as a single `"\n"`. |
@@ -41,6 +42,7 @@ NOTE: if a single word is too long to fit the width with specified font size, it
         lineBreak: 'auto',
         strokeText: false
         sizeToFill: false,
+        maxFontSizeToFill: false,
         allowNewLine: true,
         justifyLines: false,
         renderHDPI: true,
