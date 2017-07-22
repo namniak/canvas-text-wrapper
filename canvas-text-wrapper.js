@@ -75,12 +75,21 @@
     var textPos = {x: 0, y: 0};
     var lineHeight = 0;
     var fontParts;
+    var multiNewLineDelimiter = '\u200B';
 
+    text = handleMultipleNewline(text);
     setFont(fontSize);
     setLineHeight();
     validate();
     render();
 
+    function handleMultipleNewline (text) {
+      do {
+        text = text.replace(/\n\n/g, '\n' + multiNewLineDelimiter + '\n');
+      } while (text.indexOf('\n\n') > -1);
+      return text;
+    }
+    
     function setFont(fontSize) {
       if (!fontParts) fontParts = (!opts.sizeToFill) ? opts.font.split(/\b\d+px\b/i) : context.font.split(/\b\d+px\b/i);
       context.font = fontParts[0] + fontSize + 'px' + fontParts[1];
@@ -256,16 +265,19 @@
     }
 
     function drawText() {
+      var skipLineOnMatch = multiNewLineDelimiter + ' ';
       for (var i = 0; i < lines.length; i++) {
         textPos.y = parseInt(textPos.y) + lineHeight;
-        context.fillText(lines[i], textPos.x, textPos.y);
+        if (lines[i] !== skipLineOnMatch) {
+          context.fillText(lines[i], textPos.x, textPos.y);
+        
+          if (opts.strokeText) {
+            context.strokeText(lines[i], textPos.x, textPos.y);
+          }
 
-        if (opts.strokeText) {
-          context.strokeText(lines[i], textPos.x, textPos.y);
-        }
-
-        if (opts.textDecoration.toLocaleLowerCase() === 'underline') {
-          underline(lines[i], textPos.x, textPos.y);
+          if (opts.textDecoration.toLocaleLowerCase() === 'underline') {
+            underline(lines[i], textPos.x, textPos.y);
+          }
         }
       }
     }
