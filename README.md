@@ -22,7 +22,7 @@ CanvasTextWrapper(HTMLCanvasElement, String [, options]);
 | **maxFontSizeToFill**  | *Number* |  If above option is `true` text won't be bigger than set. |
 | **strokeText**  | *Boolean* |  Allow text outline based on canvas context configuration. |
 | **justifyLines**  | *Boolean* |  All lines will try to match the same width with flexed spaces between the words. |
-| **allowNewLine**  | *Boolean* |  Text breaks on a new line character "\n". Note it doesn't support multiple new lines, so `"\n\n\n"` will be rendered the same as a single `"\n"`. |
+| **allowNewLine**  | *Boolean* |  Text breaks on a new line character "\n". Supports multiple consecutive new lines. |
 | **renderHDPI**  | *Boolean* |  Text is rendered based on device pixel ratio. |
 | **textDecoration**  | `"none"`  `"underline"` |  Text is underlined according to `context.strokeStyle` and `context.lineWidth` |
 
