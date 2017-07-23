@@ -39,10 +39,10 @@ var model = [
     lineHeight: '60px'
   },
   {
-    txt: 'Use\n new line character "\\n"\n to break lines\nwhere needed',
+    txt: 'Use new line character "\\n"\n\n\n to break lines\n\n where\n needed',
     font: 'bold 30px Arial, sans-serif',
-    verticalAlign: 'bottom',
+    verticalAlign: 'top',
     allowNewLine: true,
-    lineHeight: '200%'
+    lineHeight: '100%'
   }
 ];
