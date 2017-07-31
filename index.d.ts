@@ -62,6 +62,6 @@ export interface CanvasTextWrapperOptions {
    /**
     * Text is underlined according to context.strokeStyle and context.lineWidth
     */
-   textDecoration?: boolean
+   textDecoration?: "none" | "underline"
 }
 
