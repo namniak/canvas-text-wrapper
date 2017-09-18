@@ -347,6 +347,8 @@
       if (opts.textDecoration.toLocaleLowerCase() !== 'none' && opts.textDecoration.toLocaleLowerCase() !== 'underline')
         throw new TypeError('Property "textDecoration" must be set to either "none" or "underline".');
     }
+
+    return(lines);
   }
 
   if ('module' in root && 'exports' in module) {
