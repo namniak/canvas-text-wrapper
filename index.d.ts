@@ -1,5 +1,12 @@
 
-export function CanvasTextWrapper(element: HTMLCanvasElement, text: string, options?: CanvasTextWrapperOptions): void;
+export function CanvasTextWrapper(element: HTMLCanvasElement, region: Region, text: string, options?: CanvasTextWrapperOptions): void;
+
+export interface Region {
+  x: number,
+  y: number,
+  width: number,
+  height: number
+}
 
 export interface CanvasTextWrapperOptions {
    /**
@@ -27,10 +34,6 @@ export interface CanvasTextWrapperOptions {
     */
    paddingY?: number,
    /**
-    * Fit canvas' container size instead of its own size.
-    */
-   fitParent?: boolean,
-   /**
     * "auto" - text goes to the next line on a whole word when there's no room
     * "word" - each next word is placed on a new line
     */
@@ -56,12 +59,7 @@ export interface CanvasTextWrapperOptions {
     */
    allowNewLine?: boolean,
    /**
-    * Text is rendered based on device pixel ratio.
-    */
-   renderHDPI?: boolean,
-   /**
     * Text is underlined according to context.strokeStyle and context.lineWidth
     */
    textDecoration?: "none" | "underline"
 }
-

@@ -1,6 +1,6 @@
 (function (root) {
 
-  function CanvasTextWrapper(canvas, text, options) {
+  function CanvasTextWrapper(canvas, region, text, options) {
     'use strict';
 
     var defaults = {
@@ -15,7 +15,6 @@
       justifyLines: false,
       paddingX: 0,
       paddingY: 0,
-      fitParent: false,
       strokeText: false,
       renderHDPI: true,
       textDecoration: 'none'
@@ -31,40 +30,12 @@
     context.font = opts.font;
     context.textBaseline = 'bottom';
 
-    var scale = 1;
-    var devicePixelRatio = (typeof global !== 'undefined') ? global.devicePixelRatio : root.devicePixelRatio;
+    var EL_WIDTH = region.width;
+    var EL_HEIGHT = region.height;
 
-    if (opts.renderHDPI && devicePixelRatio > 1) {
-      var tempCtx = {};
+    var EL_X = region.x;
+    var EL_Y = region.y;
 
-      // store context settings in a temp object before scaling otherwise they will be lost
-      for (var key in context) {
-        tempCtx[key] = context[key];
-      }
-
-      var canvasWidth = canvas.width;
-      var canvasHeight = canvas.height;
-      scale = devicePixelRatio;
-
-      canvas.width = canvasWidth * scale;
-      canvas.height = canvasHeight * scale;
-      canvas.style.width = canvasWidth * scale * 0.5 + 'px';
-      canvas.style.height = canvasHeight * scale * 0.5 + 'px';
-
-      // restore context settings
-      for (var key in tempCtx) {
-        try {
-          context[key] = tempCtx[key];
-        } catch (e) {
-
-        }
-      }
-
-      context.scale(scale, scale);
-    }
-
-    var EL_WIDTH = (!opts.fitParent ? canvas.width : canvas.parentNode.clientWidth) / scale;
-    var EL_HEIGHT = (!opts.fitParent ? canvas.height : canvas.parentNode.clientHeight) / scale;
     var MAX_TXT_WIDTH = EL_WIDTH - (opts.paddingX * 2);
     var MAX_TXT_HEIGHT = EL_HEIGHT - (opts.paddingY * 2);
 
@@ -89,7 +60,7 @@
       } while (text.indexOf('\n\n') > -1);
       return text;
     }
-    
+
     function setFont(fontSize) {
       if (!fontParts) fontParts = (!opts.sizeToFill) ? opts.font.split(/\b\d+px\b/i) : context.font.split(/\b\d+px\b/i);
       context.font = fontParts[0] + fontSize + 'px' + fontParts[1];
@@ -270,7 +241,7 @@
         textPos.y = parseInt(textPos.y) + lineHeight;
         if (lines[i] !== skipLineOnMatch) {
           context.fillText(lines[i], textPos.x, textPos.y);
-        
+
           if (opts.strokeText) {
             context.strokeText(lines[i], textPos.x, textPos.y);
           }
@@ -286,21 +257,21 @@
       context.textAlign = opts.textAlign;
 
       if (opts.textAlign == 'center') {
-        textPos.x = EL_WIDTH / 2;
+        textPos.x = EL_X + EL_WIDTH / 2;
       } else if (opts.textAlign == 'right') {
-        textPos.x = EL_WIDTH - opts.paddingX;
+        textPos.x = EL_X + EL_WIDTH - opts.paddingX;
       } else {
-        textPos.x = opts.paddingX;
+        textPos.x = EL_X + opts.paddingX;
       }
     }
 
     function setVertAlign() {
       if (opts.verticalAlign == 'middle') {
-        textPos.y = (EL_HEIGHT - textBlockHeight) / 2;
+        textPos.y = EL_Y + (EL_HEIGHT - textBlockHeight) / 2;
       } else if (opts.verticalAlign == 'bottom') {
-        textPos.y = EL_HEIGHT - textBlockHeight - opts.paddingY;
+        textPos.y = EL_Y + EL_HEIGHT - textBlockHeight - opts.paddingY;
       } else {
-        textPos.y = opts.paddingY;
+        textPos.y = EL_Y + opts.paddingY;
       }
     }
 
@@ -329,9 +300,6 @@
       if (isNaN(opts.paddingY))
         throw new TypeError('Property "paddingY" must be a Number.');
 
-      if (typeof opts.fitParent !== 'boolean')
-        throw new TypeError('Property "fitParent" must be a Boolean.');
-
       if (opts.lineBreak.toLocaleLowerCase() !== 'auto' && opts.lineBreak.toLocaleLowerCase() !== 'word')
         throw new TypeError('Property "lineBreak" must be set to either "auto" or "word".');
 
@@ -341,8 +309,6 @@
       if (typeof opts.strokeText !== 'boolean')
         throw new TypeError('Property "strokeText" must be a Boolean.');
 
-      if (typeof opts.renderHDPI !== 'boolean')
-        throw new TypeError('Property "renderHDPI" must be a Boolean.');
 
       if (opts.textDecoration.toLocaleLowerCase() !== 'none' && opts.textDecoration.toLocaleLowerCase() !== 'underline')
         throw new TypeError('Property "textDecoration" must be set to either "none" or "underline".');
