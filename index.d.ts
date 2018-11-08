@@ -35,7 +35,11 @@ export interface CanvasTextWrapperOptions {
     */
    offsetY?: number,
    /**
-    * Fit canvas' container size instead of its own size.
+   * Limit the width (in px) of the text box.
+   */
+   maxWidth?: number,
+   /**
+    * Fit canva's container size instead of its own size. 0 means no limit.
     */
    fitParent?: boolean,
    /**

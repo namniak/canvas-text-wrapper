@@ -17,6 +17,7 @@
       paddingY: 0,
       offsetX: 0,
       offsetY: 0,
+      maxWidth: 0,
       fitParent: false,
       strokeText: false,
       renderHDPI: true,
@@ -69,6 +70,10 @@
     var EL_HEIGHT = (!opts.fitParent ? canvas.height : canvas.parentNode.clientHeight) / scale;
     var MAX_TXT_WIDTH = EL_WIDTH - (opts.paddingX * 2) - (opts.offsetX);
     var MAX_TXT_HEIGHT = EL_HEIGHT - (opts.paddingY * 2) - (opts.offsetY);
+
+    if (opts.maxWidth > 0) {
+      MAX_TXT_WIDTH = ( MAX_TXT_WIDTH > opts.maxWidth ) ? opts.maxWidth : MAX_TXT_WIDTH;
+    }
 
     var fontSize = opts.font.match(/\d+(px|em|%)/g) ? +opts.font.match(/\d+(px|em|%)/g)[0].match(/\d+/g) : 18;
     var textBlockHeight = 0;
@@ -336,6 +341,9 @@
 
       if (isNaN(opts.offsetY))
         throw new TypeError('Property "offsetY" must be a Number.');
+
+      if (isNaN(opts.maxWidth))
+        throw new TypeError('Property "maxWidth" must be a Number.');
 
       if (typeof opts.fitParent !== 'boolean')
         throw new TypeError('Property "fitParent" must be a Boolean.');

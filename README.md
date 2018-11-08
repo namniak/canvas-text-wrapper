@@ -18,6 +18,7 @@ CanvasTextWrapper(HTMLCanvasElement, String [, options]);
 | **paddingY**  | *Number* | Vertical padding (in px) that is equally set on top and bottoms. |
 | **offsetX**  | *Number* | Horizontal offset (in px) that is set on left  side. |
 | **offsetY**  | *Number* | Vertical offset (in px) that is set on top. |
+| **maxWidth**  | *Number* | Limit the width (in px) of the text box. 0 means no limit |
 | **fitParent**  | *Boolean* | Fit canvas' container size instead of its own size. |
 | **lineBreak**  | `"auto"` `"word"` |  `"auto"` - text goes to the next line on a whole word when there's no room  `"word"` - each next word is placed on a new line |
 | **sizeToFill**  | *Boolean* |  Ignore given font size and line height and resize text to fill its padded container. |
@@ -40,6 +41,9 @@ NOTE: if a single word is too long to fit the width with specified font size, it
         verticalAlign: 'top',
         paddingX: 0,
         paddingY: 0,
+        offsetX: 0,
+        offsetY: 0,
+        maxWidth: 0,
         fitParent: false,
         lineBreak: 'auto',
         strokeText: false
