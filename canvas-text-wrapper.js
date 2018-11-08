@@ -15,6 +15,8 @@
       justifyLines: false,
       paddingX: 0,
       paddingY: 0,
+      offsetX: 0,
+      offsetY: 0,
       fitParent: false,
       strokeText: false,
       renderHDPI: true,
@@ -65,8 +67,8 @@
 
     var EL_WIDTH = (!opts.fitParent ? canvas.width : canvas.parentNode.clientWidth) / scale;
     var EL_HEIGHT = (!opts.fitParent ? canvas.height : canvas.parentNode.clientHeight) / scale;
-    var MAX_TXT_WIDTH = EL_WIDTH - (opts.paddingX * 2);
-    var MAX_TXT_HEIGHT = EL_HEIGHT - (opts.paddingY * 2);
+    var MAX_TXT_WIDTH = EL_WIDTH - (opts.paddingX * 2) - (opts.offsetX);
+    var MAX_TXT_HEIGHT = EL_HEIGHT - (opts.paddingY * 2) - (opts.offsetY);
 
     var fontSize = opts.font.match(/\d+(px|em|%)/g) ? +opts.font.match(/\d+(px|em|%)/g)[0].match(/\d+/g) : 18;
     var textBlockHeight = 0;
@@ -89,7 +91,7 @@
       } while (text.indexOf('\n\n') > -1);
       return text;
     }
-    
+
     function setFont(fontSize) {
       if (!fontParts) fontParts = (!opts.sizeToFill) ? opts.font.split(/\b\d+px\b/i) : context.font.split(/\b\d+px\b/i);
       context.font = fontParts[0] + fontSize + 'px' + fontParts[1];
@@ -270,7 +272,7 @@
         textPos.y = parseInt(textPos.y) + lineHeight;
         if (lines[i] !== skipLineOnMatch) {
           context.fillText(lines[i], textPos.x, textPos.y);
-        
+
           if (opts.strokeText) {
             context.strokeText(lines[i], textPos.x, textPos.y);
           }
@@ -286,21 +288,21 @@
       context.textAlign = opts.textAlign;
 
       if (opts.textAlign == 'center') {
-        textPos.x = EL_WIDTH / 2;
+        textPos.x = (EL_WIDTH  + opts.offsetX) / 2;
       } else if (opts.textAlign == 'right') {
         textPos.x = EL_WIDTH - opts.paddingX;
       } else {
-        textPos.x = opts.paddingX;
+        textPos.x = opts.paddingX + opts.offsetX;
       }
     }
 
     function setVertAlign() {
       if (opts.verticalAlign == 'middle') {
-        textPos.y = (EL_HEIGHT - textBlockHeight) / 2;
+        textPos.y = (EL_HEIGHT - textBlockHeight + opts.offsetY) / 2;
       } else if (opts.verticalAlign == 'bottom') {
         textPos.y = EL_HEIGHT - textBlockHeight - opts.paddingY;
       } else {
-        textPos.y = opts.paddingY;
+        textPos.y = opts.paddingY + opts.offsetY;
       }
     }
 
@@ -328,6 +330,12 @@
 
       if (isNaN(opts.paddingY))
         throw new TypeError('Property "paddingY" must be a Number.');
+
+      if (isNaN(opts.offsetX))
+        throw new TypeError('Property "offsetX" must be a Number.');
+
+      if (isNaN(opts.offsetY))
+        throw new TypeError('Property "offsetY" must be a Number.');
 
       if (typeof opts.fitParent !== 'boolean')
         throw new TypeError('Property "fitParent" must be a Boolean.');

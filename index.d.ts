@@ -27,6 +27,14 @@ export interface CanvasTextWrapperOptions {
     */
    paddingY?: number,
    /**
+    * Horizontal offset (in px) that is set on left side.
+    */
+   offsetX?: number,
+   /**
+    * Vertical offset (in px) that is set on top.
+    */
+   offsetY?: number,
+   /**
     * Fit canvas' container size instead of its own size.
     */
    fitParent?: boolean,
@@ -64,4 +72,3 @@ export interface CanvasTextWrapperOptions {
     */
    textDecoration?: "none" | "underline"
 }
-

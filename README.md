@@ -16,6 +16,8 @@ CanvasTextWrapper(HTMLCanvasElement, String [, options]);
 | **verticalAlign** | `"top"`  `"middle"` `"bottom"` | Vertical alignment of the whole text block. |
 | **paddingX**  | *Number* | Horizontal padding (in px) that is equally set on left and right sides. |
 | **paddingY**  | *Number* | Vertical padding (in px) that is equally set on top and bottoms. |
+| **offsetX**  | *Number* | Horizontal offset (in px) that is set on left  side. |
+| **offsetY**  | *Number* | Vertical offset (in px) that is set on top. |
 | **fitParent**  | *Boolean* | Fit canvas' container size instead of its own size. |
 | **lineBreak**  | `"auto"` `"word"` |  `"auto"` - text goes to the next line on a whole word when there's no room  `"word"` - each next word is placed on a new line |
 | **sizeToFill**  | *Boolean* |  Ignore given font size and line height and resize text to fill its padded container. |
@@ -31,7 +33,7 @@ NOTE: if a single word is too long to fit the width with specified font size, it
 
 ## Default options
 ```javascript
-   { 
+   {
         font: '18px Arial, sans-serif',
         lineHeight: 1,
         textAlign: 'left',
@@ -70,7 +72,7 @@ CanvasTextWrapper(canvas, 'Hello', {strokeText: true});
 
 ## Test
 Run ```npm t```
-NOTE: Test requires [beefy](http://didact.us/beefy/) to be installed globally 
+NOTE: Test requires [beefy](http://didact.us/beefy/) to be installed globally
 
 
 ## Examples
