@@ -27,7 +27,19 @@ export interface CanvasTextWrapperOptions {
     */
    paddingY?: number,
    /**
-    * Fit canvas' container size instead of its own size.
+    * Horizontal offset (in px) that is set on left side.
+    */
+   offsetX?: number,
+   /**
+    * Vertical offset (in px) that is set on top.
+    */
+   offsetY?: number,
+   /**
+   * Limit the width (in px) of the text box.
+   */
+   maxWidth?: number,
+   /**
+    * Fit canva's container size instead of its own size. 0 means no limit.
     */
    fitParent?: boolean,
    /**
@@ -64,4 +76,3 @@ export interface CanvasTextWrapperOptions {
     */
    textDecoration?: "none" | "underline"
 }
-
